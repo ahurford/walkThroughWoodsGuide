@@ -1,10 +1,10 @@
 ---
-title: "Walkthrough the woods"
+title: "A walk through the woods"
 site: bookdown::bookdown_site
 output: bookdown::gitbook #bookdown::html_document2
 documentclass: book
 github-repo: atellezcastr/walkThroughWoodsGuide
-description: "Guide to Walk through woods Assignment"
+description: "Guide a to Walk through woods Assignment"
 ---
 
 # Background
