@@ -1,0 +1,67 @@
+# The Guide {#guide}
+
+To start solving this assignments what we want to do first is to load the data given
+```{r}
+data1 <- read.csv(file = "_B2010 2_Walk through Woods_DATASET and VALUES_POST.csv")
+data1[0:5,0:9]
+```
+
+With this data we can make a plot to show correlation between the `Average cross sectional vessel area` and `the number of vessels` in the following way:
+
+```{r}
+plot(data1$N..mm..2.~data1$A..mm.2., pch = 19, xlab = "Average cross sectional vessel area", ylab = "Number of vessels per unit cross sectional area", col="blue")
+```
+
+And also we can look at the relation between `Wood density` and `Average of absolute value of latitude`
+```{r}
+plot(data1$AbsLat..Degrees.~data1$D..g.cm.3., pch = 19, xlab = "Wood density", ylab = "Average of absolute value of latitude", col = 'black')
+```
+
+
+To analyze the relation between variables we can use the `cor(x,y,method = "pearson")` function. And it will give us a numeric description of the data's relation (for more information about this topic:)
+
+
+##    Sample with t.test {#t.test}
+**Structural adaptation**: Average cross sectional vessel area
+
+**Categories**:
+
+  -   Tall(Average plant height is greater than 3 meters)
+
+```{r}
+cat1 <-data1[0:10,0:3]
+cat1
+```
+
+
+  -   Short(Average plant height is less than 3 meters)
+
+```{r}
+cat2 <- data1[11:20,0:3]
+cat2
+```
+
+  Means and standard deviations of both group of data:
+  
+```{r}
+mean1 <- mean(cat1[,3])
+mean2 <- mean(cat2[,3])
+
+sd1 <- sd(cat1[,3])
+sd2 <- sd(cat2[,3])
+
+mean1
+mean2
+sd1
+sd2
+barplot(c(mean1,mean2), names.arg = c('cat1','cat2'),main ="Average of groups", ylim = c(0,0.0125), col = c('blue','blue'))
+```
+
+For the t.test if we want to evaluate $\alpha = 0.05$ if our p-value is greater than our $\alpha$ both means are not statistically different (based on the datasets). Althought, if the p-value is less than $\alpha$ then both means are statistically different: 
+
+```{r}
+t.test(cat1[,3], cat2[,3], alternative = 'two.sided',paired = TRUE)
+```
+
+For more information about t.tests and statistical analysis refer to:
+<https://ahurford.github.io/quant-guide-all-courses/statistics.html>

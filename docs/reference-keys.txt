@@ -3,3 +3,5 @@ Assignment
 part1
 part2
 instructions
+guide
+t.test
