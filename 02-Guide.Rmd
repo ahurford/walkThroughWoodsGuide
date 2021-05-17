@@ -1,22 +1,55 @@
 # The Guide {#guide}
 
-To start solving this assignments what we want to do first is to load the data given
+1. Review [7 Best Practices](https://ahurford.github.io/quant-guide-all-courses/style.html) chapter of [Quantitative skills for biology](https://ahurford.github.io/quant-guide-all-courses/). Make a folder on your computer Desktop where you will work on this assignment.  
+
+2. Download the file `wood.csv` from the course BrightSpace.
+
+3. Review [8.2 Loading or importing data](https://ahurford.github.io/quant-guide-all-courses/data-entry.html#loading-or-importing-data). Open and save a new R Script (see [3.2 Source Pane](https://ahurford.github.io/quant-guide-all-courses/rstudio.html#source-pane]) if you are unsure how to do this). One of the first commands of your R Script will be to load your data, for example:
+
+
 ```{r}
-data1 <- read.csv(file = "_B2010 2_Walk through Woods_DATASET and VALUES_POST.csv")
-data1[0:5,0:9]
+data1 <- read.csv(file = "woods.csv")
 ```
 
-With this data we can make a plot to show correlation between the `Average cross sectional vessel area` and `the number of vessels` in the following way:
+4. In the [Console](https://ahurford.github.io/quant-guide-all-courses/rstudio.html#console-pane), inspect your data to check that it has loaded. For example:
 
 ```{r}
-plot(data1$N..mm..2.~data1$A..mm.2., pch = 19, xlab = "Average cross sectional vessel area", ylab = "Number of vessels per unit cross sectional area", col="blue")
+head(data1)
 ```
 
-And also we can look at the relation between `Wood density` and `Average of absolute value of latitude`
+If your data has not loaded, the most likely problem is a spelling error or problems with specifying the [path](https://ahurford.github.io/quant-guide-all-courses/rintro.html#working-directory) to `wood.csv`. You might try:
+
+- the [RStudio way](https://ahurford.github.io/quant-guide-all-courses/data-entry.html#the-rstudio-way-the-import-feature) of importing your data, or
+
+- moving `wood.csv` to your [working directory](https://ahurford.github.io/quant-guide-all-courses/data-entry.html#the-rstudio-way-the-import-feature).
+
+5. You will want to do some exploration of your data. See [8.4 Handling the data](https://ahurford.github.io/quant-guide-all-courses/data-entry.html#handling-the-data) for how to recover the names of the columns for all the data.
+
 ```{r}
-plot(data1$AbsLat..Degrees.~data1$D..g.cm.3., pch = 19, xlab = "Wood density", ylab = "Average of absolute value of latitude", col = 'black')
+names(data1)
 ```
 
+See the metadata file on the course BrightSpace for an explanation of the meanings of the data columns. Read over the assignment instructions.
+
+Do you hypothesize a relationship between the data in any of the columns? You might start investigating your hypothesis by making a plot, for example, showing the `Average cross sectional vessel area` and `the number of vessels`. To extract a column of the data see [8.4 Handling the data](https://ahurford.github.io/quant-guide-all-courses/data-entry.html#handling-the-data).
+
+For the `Average cross sectional vessel area`, in the _Console_, try:
+
+```{r}
+data1$A..mm.2.
+```
+
+Be sure to type exactly `A..mm.2.` after the `$`. You can make your plot as:
+
+```{r}
+plot(data1$N..mm..2.,data1$A..mm.2., pch = 19, xlab = "Average cross sectional vessel area", ylab = "Number of vessels per unit cross sectional area", col="blue")
+```
+
+Again, be sure to type the column names exactly as the appear in the output of `names(data1)` but without the `""`.
+
+Can you make a plot of different variables, for example `Wood density` and `Average of absolute value of latitude`?
+
+What happens if you type `plot(data1$Family, data1$Binomial)` in the `Console`? Why is this not a very sensible choice for something to plot?
 
 To analyze the relation between variables we can use the `cor(x,y,method = "pearson")` function. And it will give us a numeric description of the data's relation (for more information about this topic:)
 
