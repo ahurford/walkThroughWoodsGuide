@@ -171,34 +171,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>In the <a href="https://ahurford.github.io/quant-guide-all-courses/rstudio.html#console-pane">Console</a>, inspect your data to check that it has loaded. For example:</li>
 </ol>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="guide.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data1)</span></code></pre></div>
-<pre><code>##          Family                   Binomial    A..mm.2. N..mm..2. F..mm.2.mm.2.
-## 1    Rhamnaceae      Krugiodendron ferreum 0.002922467        45    0.13151099
-## 2      Fabaceae          Tamarindus indica 0.010386891         9    0.09348202
-## 3 Anacardiaceae        Astronium urundeuva 0.009503318        15    0.14254977
-## 4      Fabaceae      Dalbergia melanoxylon 0.013273229         7    0.09291260
-## 5      Fabaceae         Swartzia corrugata 0.018385386         4    0.07354154
-## 6      Fabaceae Caesalpinia paraguariensis 0.003848451        25    0.09621127
-##   logA..mm.2. logN..mm..2. logF..mm.2.mm.2. D..g.cm.3. AbsLat..Degrees.  X
-## 1   -2.534250    1.6532125       -0.8810379       1.35               NA NA
-## 2   -1.983514    0.9542425       -1.0292719       1.28        10.133333 NA
-## 3   -2.022125    1.1760913       -0.8460335       1.21        14.000000 NA
-## 4   -1.877023    0.8450980       -1.0319254       1.20         4.633333 NA
-## 5   -1.735527    0.6020600       -1.1334673       1.20        10.000000 NA
-## 6   -2.414714    1.3979400       -1.0167740       1.18               NA NA
-##   DATASET.VALUES                                                           X.1
-## 1         Family                                                  Plant family
-## 2       Binomial                                       Plant genus and species
-## 3       A (mm^2)                           Average cross sectional vessel area
-## 4      N (mm^-2)               Number of vessels per unit cross sectional area
-## 5  F (mm^2/mm^2) (F = A*N) Fraction of cross sectional area that is in vessels
-## 6    logA (mm^2)                                     log10 transformation of A
-##   X.2 X.3 X.4 X.5 X.6 X.7        X.8
-## 1  NA  NA  NA  NA  NA  NA         NA
-## 2  NA  NA  NA  NA  NA  NA         NA
-## 3  NA  NA  NA  NA  NA  NA -0.1162116
-## 4  NA  NA  NA  NA  NA  NA         NA
-## 5  NA  NA  NA  NA  NA  NA         NA
-## 6  NA  NA  NA  NA  NA  NA         NA</code></pre>
 <p>If your data has not loaded, the most likely problem is a spelling error or problems with specifying the <a href="https://ahurford.github.io/quant-guide-all-courses/rintro.html#working-directory">path</a> to <code>wood.csv</code>. You might try:</p>
 <ul>
 <li><p>the <a href="https://ahurford.github.io/quant-guide-all-courses/data-entry.html#the-rstudio-way-the-import-feature">RStudio way</a> of importing your data, or</p></li>
@@ -207,7 +179,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol start="5" style="list-style-type: decimal">
 <li>You will want to do some exploration of your data. See <a href="https://ahurford.github.io/quant-guide-all-courses/data-entry.html#handling-the-data">8.4 Handling the data</a> for how to recover the names of the columns for all the data.</li>
 </ol>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="guide.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(data1)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="guide.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(data1)</span></code></pre></div>
 <pre><code>##  [1] &quot;Family&quot;           &quot;Binomial&quot;         &quot;A..mm.2.&quot;         &quot;N..mm..2.&quot;       
 ##  [5] &quot;F..mm.2.mm.2.&quot;    &quot;logA..mm.2.&quot;      &quot;logN..mm..2.&quot;     &quot;logF..mm.2.mm.2.&quot;
 ##  [9] &quot;D..g.cm.3.&quot;       &quot;AbsLat..Degrees.&quot; &quot;X&quot;                &quot;DATASET.VALUES&quot;  
@@ -216,107 +188,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>See the metadata file on the course BrightSpace for an explanation of the meanings of the data columns. Read over the assignment instructions.</p>
 <p>Do you hypothesize a relationship between the data in any of the columns? You might start investigating your hypothesis by making a plot, for example, showing the <code>Average cross sectional vessel area</code> and <code>the number of vessels</code>. To extract a column of the data see <a href="https://ahurford.github.io/quant-guide-all-courses/data-entry.html#handling-the-data">8.4 Handling the data</a>.</p>
 <p>For the <code>Average cross sectional vessel area</code>, in the <em>Console</em>, try:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="guide.html#cb6-1" aria-hidden="true" tabindex="-1"></a>data1<span class="sc">$</span>A..mm.<span class="fl">2.</span></span></code></pre></div>
-<pre><code>##   [1] 0.002922467 0.010386891 0.009503318 0.013273229 0.018385386 0.003848451
-##   [7] 0.025446900 0.004133158 0.002281189 0.018385386 0.000855299 0.024052819
-##  [13] 0.004964109 0.001590431 0.041547563 0.009852035 0.015174678 0.002457511
-##  [19] 0.003033290 0.006939778 0.005026548 0.017671459 0.008678650 0.006361725
-##  [25] 0.025026189 0.002375829 0.000380133 0.019379307 0.002827433 0.024052819
-##  [31] 0.024052819 0.012076282 0.017671459 0.015393804 0.006647610 0.000855299
-##  [37] 0.032365473 0.002733971 0.049875925 0.019487692 0.015393804 0.008765436
-##  [43] 0.007853982 0.010207035 0.009676891 0.025446900 0.010568318 0.007697687
-##  [49] 0.016512996 0.020862139 0.017671459 0.003318307 0.010935884 0.014313882
-##  [55] 0.013069811 0.002827433 0.013273229 0.005674502 0.008992024 0.006361725
-##  [61] 0.036305030 0.001739657 0.000452389 0.012778166 0.020358306 0.013273229
-##  [67] 0.021382465 0.019113450 0.004432525 0.022965828 0.014957123 0.031415927
-##  [73] 0.022496160 0.003318307 0.000962113 0.001134115 0.025446900 0.035588354
-##  [79] 0.028352874 0.000572555 0.006361725 0.002375829 0.008659015 0.055154586
-##  [85] 0.039760782 0.020106193 0.012271846 0.012271846 0.006939778 0.032365473
-##  [91] 0.018869191 0.001963495 0.031415927 0.057255526 0.003959192 0.010751315
-##  [97] 0.009160884 0.001809557 0.013273229 0.000572555 0.002375829 0.020358306
-## [103] 0.014405511 0.000572555 0.011309734 0.005554336 0.033666092 0.003318307
-## [109] 0.007107853 0.010935884 0.013684778 0.013273229 0.014526724 0.008659015
-## [115] 0.028352874 0.019113450 0.041626103 0.007034811 0.039760782 0.024884555
-## [121] 0.005541769 0.010568318 0.017671459 0.045238934 0.038013271 0.000834486
-## [127] 0.023656716 0.047143525 0.009503318 0.014102609 0.005026548 0.041547563
-## [133] 0.020106193 0.008040121 0.004536460 0.020611989 0.015393804 0.010935884
-## [139] 0.022698007 0.002123717 0.004536460 0.027759113 0.005944679 0.001134115
-## [145] 0.012271846 0.010618583 0.000804248 0.020106193 0.007389811 0.014957123
-## [151] 0.015393804 0.000530929 0.003117245 0.031415927 0.028352874 0.010386891
-## [157] 0.000706858 0.022698007 0.009905834 0.005541769 0.025164943 0.001734945
-## [163] 0.001134115 0.011574413 0.022431757 0.021382465 0.009503318 0.002827433
-## [169] 0.012867964 0.021382465 0.003848451 0.003318307 0.002043606 0.007409446
-## [175] 0.012076282 0.007697687 0.009503318 0.003216991 0.004536460 0.007542964
-## [181] 0.020106193 0.057255526 0.056322866 0.017671459 0.001590431 0.028485606
-## [187] 0.040251656 0.010386891 0.008992024 0.005026548 0.025446900 0.000855299
-## [193] 0.028352874 0.005674502 0.006381360 0.002552544 0.035632729 0.020106193
-## [199] 0.024052819 0.033006358 0.015836769 0.003117245 0.017671459 0.005541769
-## [205] 0.000706858 0.003019071 0.014957123 0.022698007 0.008659015 0.005026548
-## [211] 0.017671459 0.009503318 0.041547563 0.046495571 0.008659015 0.011150298
-## [217] 0.020106193 0.030171856 0.058964553 0.000530929 0.005026548 0.032365473
-## [223] 0.015393804 0.009503318 0.005281017 0.002733971 0.002375829 0.004778362
-## [229] 0.001661903 0.001194591 0.002551759 0.001885741 0.036305030 0.000962113
-## [235] 0.010751315 0.013273229 0.047143525 0.002720619 0.001963495 0.000829773
-## [241] 0.010386891 0.009503318 0.011309734 0.024052819 0.002827433 0.013069811
-## [247] 0.007542964 0.014957123 0.005674502 0.051090151 0.006920143 0.012271846
-## [253] 0.010386891 0.007853982 0.031415927 0.017671459 0.020867244 0.009120436
-## [259] 0.004592808 0.006082123 0.000936587 0.025446900 0.004417865 0.004417865
-## [265] 0.001214226 0.054325206 0.047143525 0.022698007 0.033979466 0.016512996
-## [271] 0.005541769 0.014313882 0.027464588 0.002463009 0.000908706 0.026590440
-## [277] 0.035566363 0.001809557 0.011830060 0.013273229 0.008011847 0.005674502
-## [283] 0.024605739 0.012271846 0.005541769 0.001749741 0.022698007 0.018626503
-## [289] 0.009503318 0.001810081 0.003525652 0.045238934 0.002375829 0.001630879
-## [295] 0.020106193 0.012076282 0.007853982 0.005674502 0.025446900 0.000697695
-## [301] 0.005089576 0.005751078 0.010935884 0.016741547 0.014313882 0.009160884
-## [307] 0.011122023 0.000962113 0.027759113 0.050471649 0.002463009 0.015393804
-## [313] 0.006361725 0.005026548 0.010815325 0.007088218 0.011976733 0.015393804
-## [319] 0.000968569 0.014313882 0.002922467 0.013273229 0.002733971 0.005026548
-## [325] 0.005026548 0.002827433 0.000886027 0.008659015 0.007088218 0.020106193
-## [331] 0.001785210 0.002244668 0.001116279 0.028809975 0.046691921 0.053092916
-## [337] 0.018869191 0.028352874 0.012271846 0.005026548 0.001320254 0.023655407
-## [343] 0.000962113 0.005872946 0.002206183 0.001963495 0.003009908 0.001095238
-## [349] 0.001320254 0.001194591 0.001134115 0.004185387 0.003293960 0.003848451
-## [355] 0.018385386 0.005944679 0.003318307 0.031415927 0.029864765 0.055154586
-## [361] 0.010028749 0.002375829 0.002642079 0.016933724 0.045238934 0.002551759
-## [367] 0.004397052 0.010386891 0.004185387 0.016512996 0.017018596 0.012667687
-## [373] 0.018869191 0.029347711 0.008659015 0.002827433 0.016512996 0.041547563
-## [379] 0.002375829 0.034636059 0.002318495 0.055154586 0.005944679 0.033006358
-## [385] 0.001134115 0.041547563 0.005741457 0.020106193 0.014333516 0.001661903
-## [391] 0.004536460 0.012271846 0.008332289 0.007542964 0.023506182 0.016286016
-## [397] 0.008494867 0.017671459 0.004417865 0.029587520 0.012867964 0.015614501
-## [403] 0.006519197 0.002922467 0.003216991 0.005273556 0.026880252 0.033006358
-## [409] 0.003525652 0.005410608 0.001963495 0.012867964 0.001278432 0.000962113
-## [415] 0.003318307 0.020106193 0.003848451 0.068349275 0.034636059 0.036305030
-## [421] 0.024052819 0.005410608 0.041547563 0.030790750 0.007542964 0.014241887
-## [427] 0.002375829 0.003848451 0.001256637 0.001256637 0.001385442 0.011309734
-## [433] 0.034636059 0.034636059 0.006939778 0.003251088 0.001520531 0.014313882
-## [439] 0.020862139 0.015393804 0.004656626 0.031415927 0.001452201 0.003318307
-## [445] 0.009676891 0.000774795 0.000489543 0.018385386 0.000856084 0.000239546
-## [451] 0.002290221 0.015836769 0.015393804 0.047143525 0.007697687 0.001498540
-## [457] 0.003959192 0.006221139 0.001707848 0.001809557 0.001590431 0.016060607
-## [463] 0.024052819 0.001520531 0.013273229 0.007697687 0.031415927 0.007601476
-## [469] 0.004536460 0.004300840 0.002508954 0.006361725 0.024331635 0.003413733
-## [475] 0.026880252 0.002350697 0.002463009 0.001138827 0.001233075 0.024052819
-## [481] 0.031415927 0.022698007 0.001963495 0.004417865 0.005026548 0.020106193
-## [487] 0.000814065 0.031415927 0.008171282 0.003019071 0.003739281 0.006792909
-## [493] 0.005281017 0.005410608 0.002042821 0.000824480 0.002123717 0.008659015
-## [499] 0.006654679 0.002290221 0.062537329 0.002827433 0.009110619 0.022698007
-## [505] 0.004417865 0.014957123 0.001989937 0.002206183 0.013273229 0.059395736
-## [511] 0.012468981 0.002290221 0.047143525 0.002746537 0.001256637 0.002375829
-## [517] 0.003690193 0.007542964 0.001885741 0.002042821 0.025446900 0.006585171
-## [523] 0.011309734 0.008332289 0.032840246 0.002290221 0.003216991 0.001385442
-## [529] 0.022167078 0.004536460 0.004417865 0.002827433 0.022432542 0.005217007
-## [535] 0.015112370 0.013478218 0.002827433 0.003421194 0.010568318 0.014313882
-## [541] 0.031415927 0.002375829 0.026880252 0.014102609 0.004417865 0.008824734
-## [547] 0.049087385 0.002733971 0.002375829 0.002827433 0.033006358 0.007853982
-## [553] 0.007088218 0.003318307 0.018385386 0.013892908 0.023778715 0.053502108
-## [559] 0.019606680 0.025086926 0.006939778 0.002827433 0.009852035 0.046913403
-## [565] 0.006647610 0.002375829 0.015393804 0.013684778 0.014313882 0.008824734
-## [571] 0.004185387 0.021124069 0.022698007 0.002463009 0.031415927 0.020106193
-## [577] 0.009676891 0.022715286 0.038013271 0.013273229 0.004185387 0.033438327
-## [583] 0.059395736 0.015836769</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="guide.html#cb5-1" aria-hidden="true" tabindex="-1"></a>data1<span class="sc">$</span>A..mm.<span class="fl">2.</span></span></code></pre></div>
 <p>Be sure to type exactly <code>A..mm.2.</code> after the <code>$</code>. You can make your plot as:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="guide.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(data1<span class="sc">$</span>N..mm..<span class="fl">2.</span>,data1<span class="sc">$</span>A..mm.<span class="fl">2.</span>, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">xlab =</span> <span class="st">&quot;Average cross sectional vessel area&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Number of vessels per unit cross sectional area&quot;</span>, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="guide.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(data1<span class="sc">$</span>N..mm..<span class="fl">2.</span>,data1<span class="sc">$</span>A..mm.<span class="fl">2.</span>, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">xlab =</span> <span class="st">&quot;Average cross sectional vessel area&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Number of vessels per unit cross sectional area&quot;</span>, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
 <p><img src="walktwoods_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <p>Again, be sure to type the column names exactly as the appear in the output of <code>names(data1)</code> but without the <code>""</code>.</p>
 <p>Can you make a plot of different variables, for example <code>Wood density</code> and <code>Average of absolute value of latitude</code>?</p>
@@ -329,8 +203,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Tall(Average plant height is greater than 3 meters)</li>
 </ul>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="guide.html#cb9-1" aria-hidden="true" tabindex="-1"></a>cat1 <span class="ot">&lt;-</span>data1[<span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>,<span class="dv">0</span><span class="sc">:</span><span class="dv">3</span>]</span>
-<span id="cb9-2"><a href="guide.html#cb9-2" aria-hidden="true" tabindex="-1"></a>cat1</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="guide.html#cb7-1" aria-hidden="true" tabindex="-1"></a>cat1 <span class="ot">&lt;-</span>data1[<span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>,<span class="dv">0</span><span class="sc">:</span><span class="dv">3</span>]</span>
+<span id="cb7-2"><a href="guide.html#cb7-2" aria-hidden="true" tabindex="-1"></a>cat1</span></code></pre></div>
 <pre><code>##           Family                   Binomial    A..mm.2.
 ## 1     Rhamnaceae      Krugiodendron ferreum 0.002922467
 ## 2       Fabaceae          Tamarindus indica 0.010386891
@@ -345,8 +219,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Short(Average plant height is less than 3 meters)</li>
 </ul>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="guide.html#cb11-1" aria-hidden="true" tabindex="-1"></a>cat2 <span class="ot">&lt;-</span> data1[<span class="dv">11</span><span class="sc">:</span><span class="dv">20</span>,<span class="dv">0</span><span class="sc">:</span><span class="dv">3</span>]</span>
-<span id="cb11-2"><a href="guide.html#cb11-2" aria-hidden="true" tabindex="-1"></a>cat2</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="guide.html#cb9-1" aria-hidden="true" tabindex="-1"></a>cat2 <span class="ot">&lt;-</span> data1[<span class="dv">11</span><span class="sc">:</span><span class="dv">20</span>,<span class="dv">0</span><span class="sc">:</span><span class="dv">3</span>]</span>
+<span id="cb9-2"><a href="guide.html#cb9-2" aria-hidden="true" tabindex="-1"></a>cat2</span></code></pre></div>
 <pre><code>##             Family               Binomial    A..mm.2.
 ## 11   Euphorbiaceae      Gymnanthes lucida 0.000855299
 ## 12        Fabaceae       Dipteryx odorata 0.024052819
@@ -359,24 +233,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 19  Rhizophoraceae      Rhizophora mangle 0.003033290
 ## 20        Fabaceae    Zollernia paraensis 0.006939778</code></pre>
 <p>Means and standard deviations of both group of data:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="guide.html#cb13-1" aria-hidden="true" tabindex="-1"></a>mean1 <span class="ot">&lt;-</span> <span class="fu">mean</span>(cat1[,<span class="dv">3</span>])</span>
-<span id="cb13-2"><a href="guide.html#cb13-2" aria-hidden="true" tabindex="-1"></a>mean2 <span class="ot">&lt;-</span> <span class="fu">mean</span>(cat2[,<span class="dv">3</span>])</span>
-<span id="cb13-3"><a href="guide.html#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="guide.html#cb13-4" aria-hidden="true" tabindex="-1"></a>sd1 <span class="ot">&lt;-</span> <span class="fu">sd</span>(cat1[,<span class="dv">3</span>])</span>
-<span id="cb13-5"><a href="guide.html#cb13-5" aria-hidden="true" tabindex="-1"></a>sd2 <span class="ot">&lt;-</span> <span class="fu">sd</span>(cat2[,<span class="dv">3</span>])</span>
-<span id="cb13-6"><a href="guide.html#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-7"><a href="guide.html#cb13-7" aria-hidden="true" tabindex="-1"></a>mean1</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="guide.html#cb11-1" aria-hidden="true" tabindex="-1"></a>mean1 <span class="ot">&lt;-</span> <span class="fu">mean</span>(cat1[,<span class="dv">3</span>])</span>
+<span id="cb11-2"><a href="guide.html#cb11-2" aria-hidden="true" tabindex="-1"></a>mean2 <span class="ot">&lt;-</span> <span class="fu">mean</span>(cat2[,<span class="dv">3</span>])</span>
+<span id="cb11-3"><a href="guide.html#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="guide.html#cb11-4" aria-hidden="true" tabindex="-1"></a>sd1 <span class="ot">&lt;-</span> <span class="fu">sd</span>(cat1[,<span class="dv">3</span>])</span>
+<span id="cb11-5"><a href="guide.html#cb11-5" aria-hidden="true" tabindex="-1"></a>sd2 <span class="ot">&lt;-</span> <span class="fu">sd</span>(cat2[,<span class="dv">3</span>])</span>
+<span id="cb11-6"><a href="guide.html#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="guide.html#cb11-7" aria-hidden="true" tabindex="-1"></a>mean1</span></code></pre></div>
 <pre><code>## [1] 0.01085664</code></pre>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="guide.html#cb15-1" aria-hidden="true" tabindex="-1"></a>mean2</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="guide.html#cb13-1" aria-hidden="true" tabindex="-1"></a>mean2</span></code></pre></div>
 <pre><code>## [1] 0.01104675</code></pre>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="guide.html#cb17-1" aria-hidden="true" tabindex="-1"></a>sd1</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="guide.html#cb15-1" aria-hidden="true" tabindex="-1"></a>sd1</span></code></pre></div>
 <pre><code>## [1] 0.00792283</code></pre>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="guide.html#cb19-1" aria-hidden="true" tabindex="-1"></a>sd2</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="guide.html#cb17-1" aria-hidden="true" tabindex="-1"></a>sd2</span></code></pre></div>
 <pre><code>## [1] 0.01292314</code></pre>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="guide.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">c</span>(mean1,mean2), <span class="at">names.arg =</span> <span class="fu">c</span>(<span class="st">&#39;cat1&#39;</span>,<span class="st">&#39;cat2&#39;</span>),<span class="at">main =</span><span class="st">&quot;Average of groups&quot;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.0125</span>), <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&#39;blue&#39;</span>,<span class="st">&#39;blue&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="guide.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">c</span>(mean1,mean2), <span class="at">names.arg =</span> <span class="fu">c</span>(<span class="st">&#39;cat1&#39;</span>,<span class="st">&#39;cat2&#39;</span>),<span class="at">main =</span><span class="st">&quot;Average of groups&quot;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.0125</span>), <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&#39;blue&#39;</span>,<span class="st">&#39;blue&#39;</span>))</span></code></pre></div>
 <p><img src="walktwoods_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <p>For the t.test if we want to evaluate <span class="math inline">\(\alpha = 0.05\)</span> if our p-value is greater than our <span class="math inline">\(\alpha\)</span> both means are not statistically different (based on the datasets). Althought, if the p-value is less than <span class="math inline">\(\alpha\)</span> then both means are statistically different:</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="guide.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(cat1[,<span class="dv">3</span>], cat2[,<span class="dv">3</span>], <span class="at">alternative =</span> <span class="st">&#39;two.sided&#39;</span>,<span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="guide.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(cat1[,<span class="dv">3</span>], cat2[,<span class="dv">3</span>], <span class="at">alternative =</span> <span class="st">&#39;two.sided&#39;</span>,<span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## 
 ##  Paired t-test
 ## 

@@ -13,7 +13,7 @@ data1 <- read.csv(file = "woods.csv")
 
 4. In the [Console](https://ahurford.github.io/quant-guide-all-courses/rstudio.html#console-pane), inspect your data to check that it has loaded. For example:
 
-```{r}
+```{r, results=FALSE}
 head(data1)
 ```
 
@@ -35,7 +35,7 @@ Do you hypothesize a relationship between the data in any of the columns? You mi
 
 For the `Average cross sectional vessel area`, in the _Console_, try:
 
-```{r}
+```{r, results=FALSE}
 data1$A..mm.2.
 ```
 
