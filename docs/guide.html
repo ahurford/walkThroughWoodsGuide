@@ -161,17 +161,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="guide" class="section level1" number="3">
 <h1><span class="header-section-number">3</span> The Guide</h1>
+<p>Let’s explore the data!</p>
 <ol style="list-style-type: decimal">
-<li><p>Review <a href="https://ahurford.github.io/quant-guide-all-courses/style.html">7 Best Practices</a> chapter of <a href="https://ahurford.github.io/quant-guide-all-courses/">Quantitative skills for biology</a>. Make a folder on your computer Desktop where you will work on this assignment.</p></li>
+<li><p>Review <a href="https://ahurford.github.io/quant-guide-all-courses/style.html">7 Best Practices</a> chapter of <a href="https://ahurford.github.io/quant-guide-all-courses/">Quantitative skills for biology</a>. It is best to make a folder on your computer Desktop where you will work on this assignment and to stay organize.</p></li>
 <li><p>Download the file <code>wood.csv</code> from the course BrightSpace.</p></li>
-<li><p>Review <a href="https://ahurford.github.io/quant-guide-all-courses/data-entry.html#loading-or-importing-data">8.2 Loading or importing data</a>. Open and save a new R Script (see <a href="https://ahurford.github.io/quant-guide-all-courses/rstudio.html#source-pane%5D">3.2 Source Pane</a> if you are unsure how to do this). One of the first commands of your R Script will be to load your data, for example:</p></li>
+<li><p>Review <a href="https://ahurford.github.io/quant-guide-all-courses/data-entry.html#loading-or-importing-data">8.2 Loading or importing data</a>. Open and save a new R Script (see <a href="https://ahurford.github.io/quant-guide-all-courses/rstudio.html#source-pane%5D">3.2 Source Pane</a> if you are unsure how to do this). <strong>TRY IT!</strong> One of the first commands of your R Script will be to load your data, for example:</p></li>
 </ol>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="guide.html#cb1-1" aria-hidden="true" tabindex="-1"></a>data1 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">&quot;woods.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="guide.html#cb1-1" aria-hidden="true" tabindex="-1"></a>data1 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">&quot;woods_jake.csv&quot;</span>)</span></code></pre></div>
 <ol start="4" style="list-style-type: decimal">
-<li>In the <a href="https://ahurford.github.io/quant-guide-all-courses/rstudio.html#console-pane">Console</a>, inspect your data to check that it has loaded. For example:</li>
+<li>In the <a href="https://ahurford.github.io/quant-guide-all-courses/rstudio.html#console-pane">Console</a>, inspect your data to check that it has loaded. <strong>TRY IT!</strong> For example:</li>
 </ol>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="guide.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data1)</span></code></pre></div>
-<p>If your data has not loaded, the most likely problem is a spelling error or problems with specifying the <a href="https://ahurford.github.io/quant-guide-all-courses/rintro.html#working-directory">path</a> to <code>wood.csv</code>. You might try:</p>
+<div class="line-block">  If your data has not loaded, the most likely problem is a spelling error or problems with specifying the<br />
+  <a href="https://ahurford.github.io/quant-guide-all-courses/rintro.html#working-directory">path</a> to <code>wood.csv</code>. You might try:</div>
 <ul>
 <li><p>the <a href="https://ahurford.github.io/quant-guide-all-courses/data-entry.html#the-rstudio-way-the-import-feature">RStudio way</a> of importing your data, or</p></li>
 <li><p>moving <code>wood.csv</code> to your <a href="https://ahurford.github.io/quant-guide-all-courses/data-entry.html#the-rstudio-way-the-import-feature">working directory</a>.</p></li>
@@ -179,23 +181,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol start="5" style="list-style-type: decimal">
 <li>You will want to do some exploration of your data. See <a href="https://ahurford.github.io/quant-guide-all-courses/data-entry.html#handling-the-data">8.4 Handling the data</a> for how to recover the names of the columns for all the data.</li>
 </ol>
+<p><strong>TRY IT!</strong> with the data you just imported.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="guide.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(data1)</span></code></pre></div>
-<pre><code>##  [1] &quot;Family&quot;           &quot;Binomial&quot;         &quot;A..mm.2.&quot;         &quot;N..mm..2.&quot;       
-##  [5] &quot;F..mm.2.mm.2.&quot;    &quot;logA..mm.2.&quot;      &quot;logN..mm..2.&quot;     &quot;logF..mm.2.mm.2.&quot;
-##  [9] &quot;D..g.cm.3.&quot;       &quot;AbsLat..Degrees.&quot; &quot;X&quot;                &quot;DATASET.VALUES&quot;  
-## [13] &quot;X.1&quot;              &quot;X.2&quot;              &quot;X.3&quot;              &quot;X.4&quot;             
-## [17] &quot;X.5&quot;              &quot;X.6&quot;              &quot;X.7&quot;              &quot;X.8&quot;</code></pre>
-<p>See the metadata file on the course BrightSpace for an explanation of the meanings of the data columns. Read over the assignment instructions.</p>
-<p>Do you hypothesize a relationship between the data in any of the columns? You might start investigating your hypothesis by making a plot, for example, showing the <code>Average cross sectional vessel area</code> and <code>the number of vessels</code>. To extract a column of the data see <a href="https://ahurford.github.io/quant-guide-all-courses/data-entry.html#handling-the-data">8.4 Handling the data</a>.</p>
-<p>For the <code>Average cross sectional vessel area</code>, in the <em>Console</em>, try:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="guide.html#cb5-1" aria-hidden="true" tabindex="-1"></a>data1<span class="sc">$</span>A..mm.<span class="fl">2.</span></span></code></pre></div>
-<p>Be sure to type exactly <code>A..mm.2.</code> after the <code>$</code>. You can make your plot as:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="guide.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(data1<span class="sc">$</span>N..mm..<span class="fl">2.</span>,data1<span class="sc">$</span>A..mm.<span class="fl">2.</span>, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">xlab =</span> <span class="st">&quot;Average cross sectional vessel area&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Number of vessels per unit cross sectional area&quot;</span>, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<pre><code>##  [1] &quot;Family&quot;   &quot;Binomial&quot; &quot;A.mm&quot;     &quot;N.mm&quot;     &quot;F&quot;        &quot;logA&quot;    
+##  [7] &quot;logN&quot;     &quot;logF&quot;     &quot;Dens&quot;     &quot;AbsLat&quot;   &quot;X&quot;        &quot;X.1&quot;     
+## [13] &quot;X.2&quot;      &quot;X.3&quot;      &quot;X.4&quot;      &quot;X.5&quot;      &quot;X.6&quot;      &quot;X.7&quot;     
+## [19] &quot;X.8&quot;      &quot;X.9&quot;      &quot;X.10&quot;     &quot;X.11&quot;     &quot;X.12&quot;</code></pre>
+<div class="line-block">  See the metadata file on the course BrightSpace for an explanation of the meanings of the data<br />
+  columns. Read over the assignment instructions.</div>
+<ol start="6" style="list-style-type: decimal">
+<li>It is now useful to began thinking about the data. Do you hypothesize a relationship between the data in any of the columns? <strong>TRY IT!</strong> You might start investigating your hypothesis by making a plot, for example, showing the <code>Average cross sectional vessel area</code> and <code>the number of vessels</code>. To extract a column of the data see <a href="https://ahurford.github.io/quant-guide-all-courses/data-entry.html#handling-the-data">8.4 Handling the data</a>.</li>
+</ol>
+<div class="line-block">  For the <code>Average cross sectional vessel area</code>, in the <em>Console</em>, try:</div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="guide.html#cb5-1" aria-hidden="true" tabindex="-1"></a>data1<span class="sc">$</span>A.mm</span></code></pre></div>
+<div class="line-block">  Be sure to type exactly <code>A.mm</code> after the <code>$</code>. <strong>TRY IT!</strong> Try making your plot:</div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="guide.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(data1<span class="sc">$</span>N.mm,data1<span class="sc">$</span>A.mm, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">xlab =</span> <span class="st">&quot;Average cross sectional vessel area&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Number of vessels per unit cross sectional area&quot;</span>, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
 <p><img src="walktwoods_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
-<p>Again, be sure to type the column names exactly as the appear in the output of <code>names(data1)</code> but without the <code>""</code>.</p>
-<p>Can you make a plot of different variables, for example <code>Wood density</code> and <code>Average of absolute value of latitude</code>?</p>
-<p>What happens if you type <code>plot(data1$Family, data1$Binomial)</code> in the <code>Console</code>? Why is this not a very sensible choice for something to plot?</p>
-<p>To analyze the relation between variables we can use the <code>cor(x,y,method = "pearson")</code> function. And it will give us a numeric description of the data’s relation (for more information about this topic:)</p>
+<div class="line-block">  <strong>The column names exactly as the appear in the output</strong> of <code>names(data1)</code> or RStudio will produce<br />
+  an error.</div>
+<ol start="7" style="list-style-type: decimal">
+<li><p><strong>TRY IT!</strong> Can you make a plot of different variables, for example <code>Wood density</code> and <code>Average of absolute value of latitude</code>?</p></li>
+<li><p><strong>TRY IT!</strong> What happens if you type <code>plot(data1$Family, data1$Binomial)</code> in the <code>Console</code>? Why is this not a very sensible choice for something to plot?</p></li>
+<li><p>To analyze the relation between variables we can use the <code>cor(x,y,method = "pearson")</code> function. And it will give us a numeric description of the data’s relation (for more information about this topic:)</p></li>
+</ol>
 <div id="t.test" class="section level2" number="3.1">
 <h2><span class="header-section-number">3.1</span> Sample with t.test</h2>
 <p><strong>Structural adaptation</strong>: Average cross sectional vessel area</p>
@@ -205,7 +213,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="guide.html#cb7-1" aria-hidden="true" tabindex="-1"></a>cat1 <span class="ot">&lt;-</span>data1[<span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>,<span class="dv">0</span><span class="sc">:</span><span class="dv">3</span>]</span>
 <span id="cb7-2"><a href="guide.html#cb7-2" aria-hidden="true" tabindex="-1"></a>cat1</span></code></pre></div>
-<pre><code>##           Family                   Binomial    A..mm.2.
+<pre><code>##           Family                   Binomial        A.mm
 ## 1     Rhamnaceae      Krugiodendron ferreum 0.002922467
 ## 2       Fabaceae          Tamarindus indica 0.010386891
 ## 3  Anacardiaceae        Astronium urundeuva 0.009503318
@@ -221,7 +229,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="guide.html#cb9-1" aria-hidden="true" tabindex="-1"></a>cat2 <span class="ot">&lt;-</span> data1[<span class="dv">11</span><span class="sc">:</span><span class="dv">20</span>,<span class="dv">0</span><span class="sc">:</span><span class="dv">3</span>]</span>
 <span id="cb9-2"><a href="guide.html#cb9-2" aria-hidden="true" tabindex="-1"></a>cat2</span></code></pre></div>
-<pre><code>##             Family               Binomial    A..mm.2.
+<pre><code>##             Family               Binomial        A.mm
 ## 11   Euphorbiaceae      Gymnanthes lucida 0.000855299
 ## 12        Fabaceae       Dipteryx odorata 0.024052819
 ## 13    Bignoniaceae  Tabebuia serratifolia 0.004964109
