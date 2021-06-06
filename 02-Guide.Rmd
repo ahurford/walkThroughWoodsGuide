@@ -26,18 +26,53 @@ head(data1)
 
 - moving `wood.csv` to your [working directory](https://ahurford.github.io/quant-guide-all-courses/data-entry.html#the-rstudio-way-the-import-feature).
 
-5. You will want to do some exploration of your data. See [8.4 Handling the data](https://ahurford.github.io/quant-guide-all-courses/data-entry.html#handling-the-data) for how to recover the names of the columns for all the data.
+5. After importing the data into R, read through the metadata file to better understand the data. 
 
-**TRY IT!** with the data you just imported. 
+>**Metadata Overview**
+>Original Article 
+Data used in this exerice originates from a Zanne, A. E., et al. (2010) study. The full article reference can be found below. 
+>
+>**Columns in the data frame**
+>
+>Column 1: Family - The taxonomic family of the plant
+>
+>Column 2: Binomial - Refers to the genus and species for each plant
+>
+>Column 3: Amm - Average cross sectional vessel area (in $mm^2$) 
+>
+>Column 4: Nnn - Number of vessels per unit cross section area (in $mm^2$)
+>
+>Column 5: F - (F = $\frac{Amm^2}{Nmm^2}$ Fraction of cross sectional area that is in vessels (in $mm^2/mm^2$)
+>
+>Column 6: logA - log10 transformation of Amm (in $mm^2$)
+>
+>Column 7: logN - log10 transformation of Nmm (in $mm^2$)
+>
+>Column 8: logF - log10 transformation of F (in $\frac{Amm^2}{Nmm^2}$
+>
+>Column 9: Dens - Wood density measurement 
+>
+>Column 10: AbsLat - Average of absolute value of latitude (in degrees)
+>
+>**Reference**
+>
+>Zanne, A. E., Westoby, M., Falster, D. S., Ackerly, D. D., Loarie, S. R., Arnold, S. E. J., & Coomes, D. A. (2010). Angiosperm wood structure: Global patterns in vessel anatomy and their relation to wood density and potential conductivity. American Journal of Botany, 97(2), 207–215. https://doi.org/10.3732/ajb.0900178
+
+```{r}
+head(data1)
+```
+
+
+6. You will want to do some exploration of your data. See [8.4 Handling the data](https://ahurford.github.io/quant-guide-all-courses/data-entry.html#handling-the-data) for how to recover the names of the columns for all the data.
+
+|   **TRY IT!** with the data you just imported. 
 
 ```{r}
 names(data1)
 ```
 
-|   See the metadata file on the course BrightSpace for an explanation of the meanings of the data 
-|   columns. Read over the assignment instructions.
 
-6. It is now useful to began thinking about the data. Do you hypothesize a relationship between the data in any of the columns? **TRY IT!** You might start investigating your hypothesis by making a plot, for example, showing the `Average cross sectional vessel area` and `the number of vessels`. To extract a column of the data see [8.4 Handling the data](https://ahurford.github.io/quant-guide-all-courses/data-entry.html#handling-the-data).
+7. It is now useful to began thinking about the data. Do you hypothesize a relationship between the data in any of the columns? **TRY IT!** You might start investigating your hypothesis by making a plot, for example, showing the `Average cross sectional vessel area` and `the number of vessels`. To extract a column of the data see [8.4 Handling the data](https://ahurford.github.io/quant-guide-all-courses/data-entry.html#handling-the-data).
 
 |   For the `Average cross sectional vessel area`, in the _Console_, try:
 
@@ -55,54 +90,63 @@ plot(data1$N.mm,data1$A.mm, pch = 19, xlab = "Average cross sectional vessel are
 |   an error. 
 
 
-7. **TRY IT!** Can you make a plot of different variables, for example `Wood density` and `Average of absolute value of latitude`?
+8. **TRY IT!** Can you make a plot of different variables, for example `Wood density` and `Average of absolute value of latitude`?
 
-8. **TRY IT!** What happens if you type `plot(data1$Family, data1$Binomial)` in the `Console`? Why is this not a very sensible choice for something to plot?
+9. **TRY IT!** What happens if you type `plot(data1$Family, data1$Binomial)` in the `Console`? Why is this not a very sensible choice for something to plot?
 
-9. To analyze the relation between variables we can use the `cor(x,y,method = "pearson")` function. And it will give us a numeric description of the data's relation (for more information about this topic:)
+10. To analyze the relation between variables we can use the `cor(x,y,method = "pearson")` function. And it will give us a numeric description of the data's relation (for more information about this topic:)
 
 
 ##    Sample with t.test {#t.test}
-**Structural adaptation**: Average cross sectional vessel area
 
-**Categories**:
+A one sample test of means compares the mean of a sample to another sample or a pre-specified value and tests for a deviation from that value. More information can be found under [10. Statistics in R] (https://ahurford.github.io/quant-guide-all-courses/statistics.html) of the [Quantitative Guide](https://ahurford.github.io/quant-guide-all-courses/). 
 
-  -   Tall(Average plant height is greater than 3 meters)
+</br>
 
-```{r}
+In this section, we will give a brief overview of how to perform a sample t-test to compare the average cross sectional vessel area between tall and short plants. 
+
+1. First produce two variable that contain the two categories of plant you want to investigate.
+
+  -   Tall (Average plant height greater than 3 meters)
+```{r, results=F}
 cat1 <-data1[0:10,0:3]
 cat1
 ```
 
 
-  -   Short(Average plant height is less than 3 meters)
+  -   Short (Average plant height  less than 3 meters)
 
-```{r}
+```{r, results=F}
 cat2 <- data1[11:20,0:3]
 cat2
 ```
 
-  Means and standard deviations of both group of data:
+2. After creating two variables that contain the two groups, calculate the means and the standard deviations of both groups.
   
-```{r}
+```{r, results=F}
 mean1 <- mean(cat1[,3])
 mean2 <- mean(cat2[,3])
 
 sd1 <- sd(cat1[,3])
 sd2 <- sd(cat2[,3])
-
-mean1
-mean2
-sd1
-sd2
-barplot(c(mean1,mean2), names.arg = c('cat1','cat2'),main ="Average of groups", ylim = c(0,0.0125), col = c('blue','blue'))
 ```
 
-For the t.test if we want to evaluate $\alpha = 0.05$ if our p-value is greater than our $\alpha$ both means are not statistically different (based on the datasets). Althought, if the p-value is less than $\alpha$ then both means are statistically different: 
+3. Once you've calculated the mean and standard deviation of the two groups, plot the results to compare the two groups. 
+
+```{r}
+barplot(c(mean1,mean2), names.arg = c('cat1','cat2'), main ="Average cross sectional vessel area", ylim = c(0,0.0125), col = c('blue','blue'))
+```
+
+This method can be useful to visualize the difference between two groups, but difficult to determine if the groups are significantly different or not due to random chance. 
+
+4. Performing a t-test allows us to determine if the groups are statistically different, and provides a measurement of the probability of an observed different could have occurred just by random chance. Here, we want to evaluate $\alpha = 0.05$, indicating that we are comfortable with a 5% risk of concluding a difference exists when there is no difference. If our p-value is greater than $\alpha$ both means are not statistically different (based on the datasets). Although, if the p-value is less than $\alpha$ then both means are statistically different: 
 
 ```{r}
 t.test(cat1[,3], cat2[,3], alternative = 'two.sided',paired = TRUE)
 ```
+
+From the output above, we see that the $p-value = 0.9589$, indicating that there is not a statistical difference in the average cross sectional vessel area between tall and short plants. Therefore, we can accept the null hypothesis that there is no different in vessel area between tall and short plants. 
+
 
 For more information about t.tests and statistical analysis refer to:
 <https://ahurford.github.io/quant-guide-all-courses/statistics.html>
