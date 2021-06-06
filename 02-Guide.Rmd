@@ -1,4 +1,4 @@
-# The Guide {#guide}
+# Assignment Guide {#guide}
 
 Let's explore the data!
 
