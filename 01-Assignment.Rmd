@@ -6,36 +6,35 @@ editor_options:
 
 # Assignment {#Assignment}
 
-For this assignment a dataset will be used to examine how structure
-adaptations of plant stems vary in relation to environmental factors.
-You are required to propose **2 question/problems** that can be studied
-using the dataset provided. The you will **formulate 2 hypotheses** and
+For this assignment, we are using a dataset to examine how structural
+adaptations of plant stems vary concerning environmental factors. You
+are required to propose **two questions/problems** that can be studied
+using the dataset provided. You will **formulate two hypotheses** and
 select the appropriate information from the dataset to address each
-hypothesis. Finally, you will interpret and explain the result
+hypothesis. Finally, you will interpret and explain the result.
 
-This is a **two (2) parts** assignment:
+This **assignment has two parts**:
 
-## Part I {#part1}
-
-You are required to investigate whether there is a relationship between
-latitude and one (1) structural adaptation in plant stems *(Please note
-that latitude relates to climate*). It is **mandatory** that you use
-**ALL** the data in the *latitude* column as one of the variables. You
-may choose data from any one of the other columns as the other variable.
-You will present your results in a scatter plot with a line of best fit
-and calculate th Pearson correlation coefficient. This will show the
-correlation between latitude and the structural adaptation of your
-choice.
-
-## Part II {#part2}
+## Part I: Structural Adaptation and Latitude {#part1}
 
 You are required to investigate whether there is a relationship between
-any structural adaptation in 2 categories of plant stems. Your
+latitude and one structural adaptation in plant stems *(Please note that
+latitude relates to climate*). You must use **ALL** the data in
+the *latitude* column as one of the variables. You may choose data from
+any one of the other columns as the other variable. You will present
+your results in a scatter plot with a line of best fit and calculate th
+Pearson correlation coefficient. This will show the correlation between
+latitude and the structural adaptation of your choice.
+
+## Part II: Structural Adaptations and Plant Categories {#part2}
+
+You are required to investigate whether there is a relationship between
+any structural adaptation in two categories of plant stems. Your
 investigation will be limited to 20 plants (2 groups of 10). How you
-group plants is up to you, but you will have to determine which plants
-fit into the groups, so some background research will be required on
-your part. For example, you can investigate any structural adaptation in
-any ONE of the following category sets or come up with your own
+group plants are up to you, but you will have to determine which plants
+fit into the groups so that some background research will be required on
+your part. *For example*, you can investigate any structural adaptation
+in any ONE of the following category sets or come up with your own
 categories (which must be approved by your lab instructor):
 
 -   Tropical vs. temperate plants (If you select this topic you are not
@@ -50,51 +49,64 @@ what qualifies as short (as these terms are relative). This can be
 determined from your background research. To help with this research and
 sorting of data, you may want to check the following sites: Global
 Biodiversity Information Facility <https://www.gbif.org/> OR
-<https://www.canadensys.net>. You will present your results with
-boxplots or bar graphs to compare the means between categories (ex.
-trees vs. shrubs) and a measure of error like standard deviation. You
-will determine statistical significance by performing T-test (more
-information about this topic can be found in:
-<https://ahurford.github.io/quant-guide-all-courses>).
+<https://www.canadensys.net>.
+
+**HAND IN** You must present your results with boxplots or bar graphs to
+compare the means between categories (ex. trees vs. shrubs) and indicate
+a measure of error (i.e. standard deviation). Determine the statistical
+significance by performing a
+[t-test](https://ahurford.github.io/quant-guide-all-courses/statistics.html#t.test)
+and
+[correlation](https://ahurford.github.io/quant-guide-all-courses/statistics.html#correlation)
+test. More information for both can be found within the [Statistics in
+R](https://ahurford.github.io/quant-guide-all-courses/statistics.html)
+section of the [Quantitative Skills for
+Biology](https://ahurford.github.io/quant-guide-all-courses/statistics.html#correlation).
 
 ## Formatting Instructions {#instructions}
 
-**Title:** Title should be concise yet informative. It should hint at
-the question or the results found in the project. This title is specific
-to the project and not a general write-up title.
+\
 
-**Introduction:** Present background information that is relevant to the
+**Title:** The title should be concise yet informative. It should hint
+at the question or the results found in the project. This title is
+specific to the project and not a general write-up title.
+
+**Introduction:** Present background information that is relevant to the
 problems you are studying. This background information or theory should
 help to formulate the questions and hypotheses. The introduction should
 include the questions that you are interested in studying for each part.
 Again, for Part I, this must be a relationship between latitude and some
-structural feature in plant stems and for Part II, you may use the
+structural feature in plant stems, and for Part II, you may use the
 suggestions given or group the plants your own way. The introduction
-should end by providing **2 hypotheses (one each for Part I and Part
+should end by providing **two hypotheses (one each for Part I and Part
 II)**. Each hypothesis should be an educated guess which is formulated
 after you have done some background reading. Use information from
 peer-reviewed articles within your introduction.
 
-**Methods:** For Part I, state the columns of data that you worked with
+**Methods:** For Part I, state the columns of data that you worked with
 and the software used. For Part II, state the variable you examined,
-your 2 categories, the specific criteria used to include plants into
+your two categories, the specific criteria used to include plants into
 each category and the software used.
 
-**Results:** For Part I, present a computer-generated scatter plot. In
+**Results:** For Part I, present a computer-generated scatter plot. In
 the text, describe the relationship you see (ex. positive, negative),
-give the Pearson correlation coefficient value and state if there any
-outliers (i.e. dots that are far away from the rest?). Avoid the
-temptation to explain what is going on, leave that for your Discussion
-section. For Part II, present a boxplot or bar graph (with standard
-deviation bars) to compare the **means** between categories. In the text
-state which group has a higher mean value and which a lower mean value,
-the t-test value and if the two categories compared statistically
-different with respect to the structural feature. Again, avoid the
-temptation to explain what is going on, leave that for your Discussion
-section.
+give the Pearson correlation coefficient value, and state any outliers
+(i.e. dots that are far away from the rest?). Avoid the temptation to
+explain what is going on, leave that for your Discussion section. For
+Part II, present a boxplot or bar graph (with standard deviation bars)
+to compare the **means** between categories. In-text state which group
+has a higher mean value and which a lower mean value, the t-test value
+and if the two categories compared statistically different with respect
+to the structural feature. Again, avoid the temptation to explain what
+is going on, leave that for your Discussion section.
 
 </br>
-***Please Note:*** *As part of the Results section for Part II, you are required to hand in a table including the plant species that you will be using in each category. This table should also include the appropriate data for the variable that you will be studying.*
+
+***Please Note:*** *As part of the Results section for Part II, you are
+required to hand in a table including the plant species that you will be
+using in each category. This table should also include the appropriate
+data for the variable that you will be studying.*
+
 </br>
 
 **Discussion:** For both Part I and Part II, you are expected to begin

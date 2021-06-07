@@ -1,4 +1,5 @@
-background
+getting-started-and-learning-r
+background-information
 Assignment
 part1
 part2

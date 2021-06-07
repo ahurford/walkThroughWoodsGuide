@@ -7,11 +7,37 @@ github-repo: atellezcastr/walkThroughWoodsGuide
 description: "Guide a to Walk through woods Assignment"
 ---
 
-# Background
+# Getting started and Learning R
+
+We are increasing the focus on quantitative skills in our Biology curriculum, in response to changing demands and emphasis within the field of biology itself. In Biology of Plants (BIOL 2010) we are introducing students to R software and basic statistical concepts.
+
+The [quantitative training guide](https://ahurford.github.io/quant-guide-all-courses/) has been writing to teach MUN biology students R coding to build a foundation for more advanced quantitative analysis of data in upper year Biology courses. We anticipate that this guide will also be a useful resource manual that you will refer back to as you use R in your future courses.
+
+1.  Read [Introduction](https://ahurford.github.io/quant-guide-all-courses/). As you read through the next sections, if you encounter a word you do not understand you may wish to consult the [Glossary](https://ahurford.github.io/quant-guide-all-courses/glossary.html).
+
+2.  Follow the steps in [R and RStudio](https://ahurford.github.io/quant-guide-all-courses/install.html) to install R and RStudio. If you are having issues with installing the software, check the [Frequently Asked Questions](https://ahurford.github.io/BIOL-1001/%5Bhttps://ahurford.github.io/quant-guide-all-courses/faq.html).
+
+3.  Read [Finding your way around RStudio](https://ahurford.github.io/quant-guide-all-courses/rstudio.html). Have your RStudio software open.
+
+-   When you encounter **TRY IT!** or courier font text in a grey box, this is an example of code that we want you to try in RStudio. Note that you should type the code exactly as it is written.
+
+-   When you encounter EXERCISE or **HAND IN** this is a question that your laboratory instructor may ask you to complete and hand in.
+
+-   You may wish to re-size the windows on your computer to view both the quantitative training guide and the RStudio software, or you may wish to view the training guide on a tablet, with the software open on your computer.
+
+4.  Work through [Introduction to R](https://ahurford.github.io/quant-guide-all-courses/rintro.html). We will sometimes give you only part of the code, or we will give code that has a deliberate mistake in it. This is not to frustrate you - rather it is a way for you to start to develop your problem solving skills. Read the text before and after the example code carefully for clues as to what you should do.
+
+5.  Proceed through the sections as assigned by your lab instructor.
+
+Expect to get stuck. This is normal when learning a new skill. Everyone who uses R, including professionals who have used it for years, gets error messages and have bugs in their code. You might look for help in [Getting help](https://ahurford.github.io/quant-guide-all-courses/help.html) or ask for help from an instructor as specified in section [3](https://ahurford.github.io/BIOL-1001/howtoask.html#howtoask).
+
+Once you've finished the first-year labs, don't forget that you have this resource. Whenever you practice using R you will get better at it. If you haven't used it for a while, your skills get rusty, but by reviewing the relevant sections of the [quantitative training guide](https://ahurford.github.io/quant-guide-all-courses/) you will quickly be able to catch up. Before you know it, you will be confidently doing quantitative work in R, which will increase your knowledge, enhance your ability to do advanced biology work, and give you a marketable skill in the work world.
+
+# Background Information 
 
 Plant can grow in length (primary growth) and girth (secondary growth). *Primary growth* increases the plant height/root length. This growth occurs via cell division at apical meristems located at the tip of shoots and roots. *Secondary growth* increases the circumference of shoots/roots. This growth occurs via cell division at the lateral meristems (vascular cambium and cork cambium). Only woody plants exhibit secondary growth (herbaceous plants do not).
 
-Plant stems have several functions, including support, transport and storage. Stems are made of a variety of **tisues** that help carry out these functions. The stems of angiosperms (flowering plants) contain several different cells and tissue types including:
+Plant stems have several functions, including support, transport and storage. Stems are made of a variety of tissues that help carry out these functions. The stems of angiosperms (flowering plants) contain several different cells and tissue types, including:
 
 -   Parenchyma: thin-walled living cells that are responsible for storage and some radial transport over small distances
 
@@ -19,7 +45,7 @@ Plant stems have several functions, including support, transport and storage. St
 
 -   Vessels: dead cells with large lumens that are responsible for water transport
 
-**The relative amount of specific tissue types varies in different types of plants (and their stems) depending on which functions are most important to survival in a plant's given environment. STRUCTURE = FUNCTION.** Structures used for one function may not be the best for another function and this often results in competing requirements for space and resources within the stem. Thus, there will be trade-offs in tissue allocation in stems. **BALANCE.**
+**The relative amount of specific tissue types varies in different plants (and their stems) depending on which functions are most important to survival in a plant's given environment. STRUCTURE = FUNCTION.** Structures used for one function may not be the best for another function and this often results in competing requirements for space and resources within the stem. Thus, there will be trade-offs in tissue allocation in stems. **BALANCE.**
 
 **Fast vs. safe transport:**
 
@@ -27,15 +53,15 @@ A smaller number of large vessels will transport water faster than a large numbe
 
 **Transport vs. mechanical support:**
 
-A large number of vessels in a stem allows for a lot of water transport, but this leaves less space for fibres, which provide mechanical support (and vice versa). A stem with more vessels and less fibres would be weaker than a stem with less vessels and more fibres.
+Many vessels in a stem allow for a lot of water transport, but this leaves less space for fibres, which provide mechanical support (and vice versa). A stem with more vessels and fewer fibres would be weaker than a stem with fewer vessels and more fibres.
 
 **Wood Density:**
 
-Wood density is a function of the amount of different tissue types within the stem and is related to ecological and environmental factors. Wood density typically ranges from 0.1-1.2 $g/cm^{3}$ (the density of water is 1 $g/cm^{3}$). A stem with lots of vessels or large vessels would be less dense (as vessels are hollow) then a stem with little vessel tissue (because more fibers).
+Wood density is a function of the number of different tissue types within the stem and is related to ecological and environmental factors. Wood density typically ranges from 0.1-1.2 $g/cm^{3}$ (the density of water is 1 $g/cm^{3}$). A stem with lots of vessels or large vessels would be less dense (as vessels are hollow) than a stem with little vessel tissue (because of more fibres).
 
 Dense Wood:
 
--   Has better mechanical strenght (fewer hollow vessels)
+-   Has better mechanical strength (fewer hollow vessels)
 
 -   Is better able to avoid embolisms related to drought (smaller vessels)
 
@@ -48,5 +74,3 @@ Dense Wood:
 Some temperate species are known as ring porous species; as they grow, they make large vessels in the spring when water is abundant and smaller ones in the summer when there is less water. Other temperate species are diffuse porous species with smaller vessels (water abundance is the same year-round, relatively lower than tropical). Tropical species are generally diffuse porous with large vessels (water abundance is the same year-round, relatively higher than tropical).
 
 Which of the above species would be more likely to leaf out earlier in the spring? Why do temperate species have smaller vessels than tropical species? If you are unsure, re-read the background information or ask for clarification.
-
-For more **R programming** information and help: <https://ahurford.github.io/quant-guide-all-courses/>
