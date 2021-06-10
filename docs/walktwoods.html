@@ -133,7 +133,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul class="summary">
 <li class="chapter" data-level="" data-path=""><a href="#getting-started-and-learning-r"><i class="fa fa-check"></i>Getting started and Learning R</a></li>
 <li class="chapter" data-level="" data-path=""><a href="#assignment-guide"><i class="fa fa-check"></i>Assignment Guide</a></li>
-<li class="chapter" data-level="0.1" data-path=""><a href="#t.test"><i class="fa fa-check"></i><b>0.1</b> Sample with t.test</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#comparing-two-means-with-a-t.test"><i class="fa fa-check"></i>Comparing two means with a t.test</a></li>
 </ul>
 
       </nav>
@@ -224,62 +224,69 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Be sure to type exactly <code>A.mm</code> after the <code>$</code>. Try making your plot:</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(data1<span class="sc">$</span>N.mm,data1<span class="sc">$</span>A.mm, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">xlab =</span> <span class="st">&quot;Average cross sectional vessel area&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Number of vessels per unit cross sectional area&quot;</span>, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
 <p><img src="walktwoods_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
-<p>You need to write the column names precisely as they appear in the output of <code>names(data1)</code> or RStudio will produce an error.</p>
+<p>You need to write the column names exactly as they appear in the output of <code>names(data1)</code> or RStudio will produce an error.</p>
 <ol start="8" style="list-style-type: decimal">
-<li><p>Can you make a plot of different variables, for example, <code>Wood density</code> and <code>Average of the absolute value of latitude</code>?</p></li>
+<li><p>Can you make a <a href="https://ahurford.github.io/quant-guide-all-courses/graph.html#scatter-plots-with-plotxy">plot</a> of different variables, for example, <code>Wood density</code> and <code>Average of the absolute value of latitude</code>?</p></li>
 <li><p>What happens if you type <code>plot(data1$Family, data1$Binomial)</code> in the <code>Console</code>? Why is this not a very sensible choice for something to plot?</p></li>
-<li><p>To analyze the relation between variables we can use the <code>cor(x,y,method = "pearson")</code> function.</p></li>
+<li><p>To analyze the relation between variables we can use the <code>cor(x,y,method = "pearson")</code> function. See <a href="https://ahurford.github.io/quant-guide-all-courses/statistics.html#correlation">Correlation</a> for details.</p></li>
 </ol>
 </div>
-<div id="t.test" class="section level2" number="0.1">
-<h2><span class="header-section-number">0.1</span> Sample with t.test</h2>
-<p>A one sample test of means compares the mean of one sample to another sample or a pre-specified value and tests for a deviation from that value. More information can be found under [10. Statistics in R] (<a href="https://ahurford.github.io/quant-guide-all-courses/statistics.html" class="uri">https://ahurford.github.io/quant-guide-all-courses/statistics.html</a>) of the <a href="https://ahurford.github.io/quant-guide-all-courses/">Quantitative Guide</a>.</p>
-<p></br></p>
-<p>This section will give a brief overview of how to perform a sample t-test to compare the average cross-sectional vessel area between tall and short plants.</p>
+<div id="comparing-two-means-with-a-t.test" class="section level2 unnumbered">
+<h2>Comparing two means with a t.test</h2>
+<p>This section will give a brief overview of how to perform a sample t-test to compare the average cross-sectional vessel area between two families: Rhamnaceae and Fabaceae. This example is to illustrate the coding for the analysis; you will want to use your knowledge of Botany to formulate a hypothesis to test.</p>
 <ol style="list-style-type: decimal">
-<li>First, produce two variables that contain the two categories of plants you want to investigate.</li>
+<li>First, produce two variables that contain the data.</li>
 </ol>
-<ul>
-<li>Tall (Average plant height greater than 3 meters)</li>
-</ul>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>cat1 <span class="ot">&lt;-</span>data1[<span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>,<span class="dv">0</span><span class="sc">:</span><span class="dv">3</span>]</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cat1)</span></code></pre></div>
-<ul>
-<li>Short (Average plant height less than 3 meters)</li>
-</ul>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>cat2 <span class="ot">&lt;-</span> data1[<span class="dv">11</span><span class="sc">:</span><span class="dv">20</span>,<span class="dv">0</span><span class="sc">:</span><span class="dv">3</span>]</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cat2)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>Rhamnaceae <span class="ot">=</span> data1[data1<span class="sc">$</span>Family<span class="sc">==</span><span class="st">&quot;Rhamnaceae&quot;</span>,]</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>Fabaceae <span class="ot">=</span> data1[data1<span class="sc">$</span>Family<span class="sc">==</span><span class="st">&quot;Fabaceae&quot;</span>,]</span></code></pre></div>
+<p>Note that we are using <code>[]</code> to extract specific rows and columns of <code>data1</code>. Observe that <code>data1$Family=="Rhamnaceae"</code> means we want all the rows where the family is “Rhamnaceae”, and the <code>,</code> indicates we would like all the columns. Type the following to understand more about these variables:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Rhamnaceae)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Fabaceae)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(Rhamnaceae[,<span class="dv">1</span>])</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(Fabaceae[,<span class="dv">1</span>])</span></code></pre></div>
+<p>The command <code>head()</code> reports the first 6 rows, and <code>length(Rhamnaceae[,1])</code> gives the length of column 1 of the variable <code>Rhamnaceae</code>.</p>
 <ol start="2" style="list-style-type: decimal">
-<li>After creating two variables that contain the two groups, calculate the means and the standard deviations of both groups.</li>
+<li>We would like to perform a t-test to compare the means of the average cross-sectional vessel area for Rhamnaceae and Fabaceae, however, before we do this we will graph these data to observe if we expect the t-test to find a significant different in means.</li>
 </ol>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>mean1 <span class="ot">&lt;-</span> <span class="fu">mean</span>(cat1[,<span class="dv">3</span>])</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>mean2 <span class="ot">&lt;-</span> <span class="fu">mean</span>(cat2[,<span class="dv">3</span>])</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>sd1 <span class="ot">&lt;-</span> <span class="fu">sd</span>(cat1[,<span class="dv">3</span>])</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>sd2 <span class="ot">&lt;-</span> <span class="fu">sd</span>(cat2[,<span class="dv">3</span>])</span></code></pre></div>
-<ol start="3" style="list-style-type: decimal">
-<li>Once you’ve calculated the mean and standard deviation of the two groups, plot the results to compare the two groups.</li>
-</ol>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">c</span>(mean1,mean2), <span class="at">names.arg =</span> <span class="fu">c</span>(<span class="st">&#39;cat1&#39;</span>,<span class="st">&#39;cat2&#39;</span>), <span class="at">main =</span><span class="st">&quot;Average cross sectional vessel area&quot;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.0125</span>), <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&#39;blue&#39;</span>,<span class="st">&#39;blue&#39;</span>))</span></code></pre></div>
-<p><img src="walktwoods_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
-<p>This method can be helpful to visualize the difference between two groups but challenging to determine if the groups are significantly different or not due to random chance.</p>
+<p>Using the <code>boxplot()</code> function requires a specific structure of the data:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">Family =</span> <span class="fu">c</span>(Rhamnaceae<span class="sc">$</span>Family,Fabaceae<span class="sc">$</span>Family), <span class="at">Area =</span> <span class="fu">c</span>(Rhamnaceae<span class="sc">$</span>A.mm, Fabaceae<span class="sc">$</span>A.mm))</span></code></pre></div>
+<p>Note that <code>c()</code> binds lists together, and in the the <code>Family</code> column of the new <a href="https://ahurford.github.io/quant-guide-all-courses/rintro.html#data-structures">dataframe</a> <code>data</code>, we need the value from the <code>$Family</code> column of the variables <code>Rhamnaceae</code> and <code>Fabaceae</code>. In the <code>Area</code> column of the new dataframe <code>data</code> we need the average cross-sectional area of the vessels <code>$A.mm</code> for the variables <code>Rhamnaceae</code> and <code>Fabaceae</code>. It is likely helpful to look at the form of the data to make sure nothing has gone wrong:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
+<pre><code>##       Family        Area
+## 1 Rhamnaceae 0.002922467
+## 2 Rhamnaceae 0.000380133
+## 3 Rhamnaceae 0.006361725
+## 4 Rhamnaceae 0.008659015
+## 5 Rhamnaceae 0.012271846
+## 6 Rhamnaceae 0.005026548</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(data)</span></code></pre></div>
+<pre><code>##       Family       Area
+## 101 Fabaceae 0.04154756
+## 102 Fabaceae 0.03300636
+## 103 Fabaceae 0.03141593
+## 104 Fabaceae 0.01838539
+## 105 Fabaceae 0.02544690
+## 106 Fabaceae 0.01327323</code></pre>
+<p>(Note <code>tail</code> gives the last 6 rows). If we have made a dataframe with the correct structure, then we can use the <code>boxplot</code> command to visualize the average cross sectional area for vessels of plants from the families <code>Rhamnaceae</code> and <code>Fabaceae</code>.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(Area<span class="sc">~</span>Family, data, <span class="at">ylab =</span> <span class="st">&quot;Av. cross-sectional area of vessels (mm)&quot;</span>)</span></code></pre></div>
+<p><img src="walktwoods_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p>Note that the rectangle for the boxplot is the interquartile range (from the 25th to 75th percentiles of our data). The 25th percentile means that only 25% of <code>Rhamnaceae</code> and <code>Fabaceae</code> species have average cross-sectional vessel areas less than these values. From this box plot, it appears that the mean of the average cross-sectional vesseal area for Rhamnaceae species is different than for Fabaceae species, suggesting that we might expect the t-test to give a significant result.</p>
 <ol start="4" style="list-style-type: decimal">
-<li>Performing a t-test allows us to determine if the groups are statistically different and measures the probability that an observed difference could have occurred just by random chance. Here, we want to evaluate <span class="math inline">\(\alpha = 0.05\)</span>, indicating that we are comfortable with a 5% risk of concluding a difference exists when there is no difference. If our p-value is greater than <span class="math inline">\(\alpha\)</span>, both means are not statistically different (based on the datasets). Although, if the p-value is less than <span class="math inline">\(\alpha\)</span> then both means are statistically different:</li>
+<li>Performing a <a href="https://ahurford.github.io/quant-guide-all-courses/statistics.html#t.test">t-test</a>) allows us to determine if the groups are statistically different and measures the probability that an observed difference could have occurred just by random chance. Here, we want to evaluate <span class="math inline">\(\alpha = 0.05\)</span>, indicating that we are comfortable with a 5% risk of concluding a difference exists when there is no difference. If our p-value is greater than <span class="math inline">\(\alpha\)</span>, both means are not statistically different (based on the datasets).</li>
 </ol>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(cat1[,<span class="dv">3</span>], cat2[,<span class="dv">3</span>], <span class="at">alternative =</span> <span class="st">&#39;two.sided&#39;</span>,<span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(Rhamnaceae<span class="sc">$</span>A.mm, Fabaceae<span class="sc">$</span>A.mm, <span class="at">alternative =</span> <span class="st">&#39;two.sided&#39;</span>,<span class="at">paired =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <pre><code>## 
-##  Paired t-test
+##  Welch Two Sample t-test
 ## 
-## data:  cat1[, 3] and cat2[, 3]
-## t = -0.052951, df = 9, p-value = 0.9589
+## data:  Rhamnaceae$A.mm and Fabaceae$A.mm
+## t = -8.1351, df = 46.385, p-value = 1.762e-10
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -0.008312154  0.007931926
+##  -0.01974705 -0.01191463
 ## sample estimates:
-## mean of the differences 
-##           -0.0001901138</code></pre>
-<p>From the output above, we see that the <span class="math inline">\(p-value = 0.9589\)</span>, indicating that there is not a statistical difference in the average cross sectional vessel area between tall and short plants. Therefore, we can accept the null hypothesis that there is no difference in vessel area between tall and short plants.</p>
-<p>More information about <a href="https://ahurford.github.io/quant-guide-all-courses/statistics.html#t.test">t.tests</a> are within the <a href="https://ahurford.github.io/quant-guide-all-courses/statistics.html">Statistics in R</a> section of the <a href="https://ahurford.github.io/quant-guide-all-courses/">Quantitative Skills for Biology guide</a>.</p>
+##   mean of x   mean of y 
+## 0.007064109 0.022894948</code></pre>
+<p>Given the p-value of <span class="math inline">\(1.76 \times 10^{-10}\)</span>, which is less than <span class="math inline">\(\alpha = 0.05\)</span>, we reject our null hypothesis that the mean cross-sectional area of vessels for Rhamnaceae species is the same as for Fabaceae. Therefore, our analysis suggest that the average cross-section vessel area for species of these Families are different.</p>
 
 </div>
             </section>

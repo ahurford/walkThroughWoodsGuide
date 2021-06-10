@@ -82,71 +82,74 @@ names(data1)
 For the `Average cross sectional vessel area`, in the `Console`, try:
 
 ```{r, results=FALSE}
-data1$Amm
+data1$A.mm
 ```
 
-Be sure to type exactly `Amm` after the `$`. Try making your plot:
+Be sure to type exactly `A.mm` after the `$`. Try making your plot:
 
 ```{r}
 plot(data1$N.mm,data1$A.mm, pch = 19, xlab = "Average cross sectional vessel area", ylab = "Number of vessels per unit cross sectional area", col="blue")
 ```
 
-You need to write the column names precisely as they appear in the output of `names(data1)` or RStudio will produce an error.
+You need to write the column names exactly as they appear in the output of `names(data1)` or RStudio will produce an error.
 
-8.  Can you make a plot of different variables, for example, `Wood density` and `Average of the absolute value of latitude`?
+8.  Can you make a [plot](https://ahurford.github.io/quant-guide-all-courses/graph.html#scatter-plots-with-plotxy) of different variables, for example, `Wood density` and `Average of the absolute value of latitude`?
 
 9.  What happens if you type `plot(data1$Family, data1$Binomial)` in the `Console`? Why is this not a very sensible choice for something to plot?
 
-10. To analyze the relation between variables we can use the `cor(x,y,method = "pearson")` function.
+10. To analyze the relation between variables we can use the `cor(x,y,method = "pearson")` function. See [Correlation](https://ahurford.github.io/quant-guide-all-courses/statistics.html#correlation) for details.
 
-## Sample with t.test {#t.test}
+## Comparing two means with a t.test {-}
 
-A one sample test of means compares the mean of one sample to another sample or a pre-specified value and tests for a deviation from that value. More information can be found under [10. Statistics in R] (<https://ahurford.github.io/quant-guide-all-courses/statistics.html>) of the [Quantitative Guide](https://ahurford.github.io/quant-guide-all-courses/).
+This section will give a brief overview of how to perform a sample t-test to compare the average cross-sectional vessel area between two families: Rhamnaceae and Fabaceae. This example is to illustrate the coding for the analysis; you will want to use your knowledge of Botany to formulate a hypothesis to test.
 
-</br>
-
-This section will give a brief overview of how to perform a sample t-test to compare the average cross-sectional vessel area between tall and short plants.
-
-1.  First, produce two variables that contain the two categories of plants you want to investigate.
-
--   Tall (Average plant height greater than 3 meters)
+1.  First, produce two variables that contain the data.
 
 ```{r, results=F}
-cat1 <-data1[0:10,0:3]
-head(cat1)
+Rhamnaceae = data1[data1$Family=="Rhamnaceae",]
+Fabaceae = data1[data1$Family=="Fabaceae",]
 ```
 
--   Short (Average plant height less than 3 meters)
+Note that we are using `[]` to extract specific rows and columns of `data1`. Observe that `data1$Family=="Rhamnaceae"` means we want all the rows where the family is "Rhamnaceae", and the `,` indicates we would like all the columns. Type the following to understand more about these variables:
 
 ```{r, results=F}
-cat2 <- data1[11:20,0:3]
-head(cat2)
+head(Rhamnaceae)
+head(Fabaceae)
+length(Rhamnaceae[,1])
+length(Fabaceae[,1])
 ```
 
-2.  After creating two variables that contain the two groups, calculate the means and the standard deviations of both groups.
+The command `head()` reports the first 6 rows, and `length(Rhamnaceae[,1])` gives the length of column 1 of the variable `Rhamnaceae`.
 
-```{r, results=F}
-mean1 <- mean(cat1[,3])
-mean2 <- mean(cat2[,3])
+2.  We would like to perform a t-test to compare the means of the average cross-sectional vessel area for Rhamnaceae and Fabaceae, however, before we do this we will graph these data to observe if we expect the t-test to find a significant different in means.
 
-sd1 <- sd(cat1[,3])
-sd2 <- sd(cat2[,3])
-```
-
-3.  Once you've calculated the mean and standard deviation of the two groups, plot the results to compare the two groups.
+Using the `boxplot()` function requires a specific structure of the data:
 
 ```{r}
-barplot(c(mean1,mean2), names.arg = c('cat1','cat2'), main ="Average cross sectional vessel area", ylim = c(0,0.0125), col = c('blue','blue'))
+data = data.frame(Family = c(Rhamnaceae$Family,Fabaceae$Family), Area = c(Rhamnaceae$A.mm, Fabaceae$A.mm))
 ```
 
-This method can be helpful to visualize the difference between two groups but challenging to determine if the groups are significantly different or not due to random chance.
-
-4.  Performing a t-test allows us to determine if the groups are statistically different and measures the probability that an observed difference could have occurred just by random chance. Here, we want to evaluate $\alpha = 0.05$, indicating that we are comfortable with a 5% risk of concluding a difference exists when there is no difference. If our p-value is greater than $\alpha$, both means are not statistically different (based on the datasets). Although, if the p-value is less than $\alpha$ then both means are statistically different:
+Note that `c()` binds lists together, and in the the `Family` column of the new [dataframe](https://ahurford.github.io/quant-guide-all-courses/rintro.html#data-structures) `data`, we need the value from the `$Family` column of the variables `Rhamnaceae` and  `Fabaceae`. In the `Area` column of the new dataframe `data` we need the average cross-sectional area of the vessels `$A.mm` for the variables `Rhamnaceae` and  `Fabaceae`. It is likely helpful to look at the form of the data to make sure nothing has gone wrong:
 
 ```{r}
-t.test(cat1[,3], cat2[,3], alternative = 'two.sided',paired = TRUE)
+head(data)
+tail(data)
 ```
 
-From the output above, we see that the $p-value = 0.9589$, indicating that there is not a statistical difference in the average cross sectional vessel area between tall and short plants. Therefore, we can accept the null hypothesis that there is no difference in vessel area between tall and short plants.
+(Note `tail` gives the last 6 rows). If we have made a dataframe with the correct structure, then we can use the `boxplot` command to visualize the average cross sectional area for vessels of plants from the families `Rhamnaceae` and  `Fabaceae`.
 
-More information about [t.tests](https://ahurford.github.io/quant-guide-all-courses/statistics.html#t.test) are within the [Statistics in R](https://ahurford.github.io/quant-guide-all-courses/statistics.html) section of the [Quantitative Skills for Biology guide](https://ahurford.github.io/quant-guide-all-courses/).
+```{r, results=T}
+boxplot(Area~Family, data, ylab = "Av. cross-sectional area of vessels (mm)")
+```
+
+Note that the rectangle for the boxplot is the interquartile range (from the 25th to 75th percentiles of our data). The 25th percentile means that only 25% of `Rhamnaceae` and  `Fabaceae` species have average cross-sectional vessel areas less than these values. From this box plot, it appears that the mean of the average cross-sectional vesseal area for Rhamnaceae species is different than for Fabaceae species, suggesting that we might expect the t-test to give a significant result.
+
+4.  Performing a [t-test](https://ahurford.github.io/quant-guide-all-courses/statistics.html#t.test)) allows us to determine if the groups are statistically different and measures the probability that an observed difference could have occurred just by random chance. Here, we want to evaluate $\alpha = 0.05$, indicating that we are comfortable with a 5% risk of concluding a difference exists when there is no difference. If our p-value is greater than $\alpha$, both means are not statistically different (based on the datasets).
+
+```{r}
+t.test(Rhamnaceae$A.mm, Fabaceae$A.mm, alternative = 'two.sided',paired = FALSE)
+```
+
+Given the p-value of $1.76 \times 10^{-10}$, which is less than $\alpha = 0.05$, we reject our null hypothesis that the mean cross-sectional area of vessels for Rhamnaceae species is the same as for Fabaceae. Therefore, our analysis suggest that the average cross-section vessel area for species of these Families are different.
+
+
