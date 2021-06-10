@@ -30,7 +30,7 @@
   
   
 
-<link rel="next" href="background-information.html"/>
+<link rel="next" href="guide.html"/>
 <script src="libs/header-attrs-2.8/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -49,7 +49,6 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
@@ -58,6 +57,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -132,16 +132,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <ul class="summary">
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Getting started and Learning R</a></li>
-<li class="chapter" data-level="2" data-path="background-information.html"><a href="background-information.html"><i class="fa fa-check"></i><b>2</b> Background Information</a></li>
-<li class="chapter" data-level="3" data-path="Assignment.html"><a href="Assignment.html"><i class="fa fa-check"></i><b>3</b> Assignment</a>
+<li class="chapter" data-level="2" data-path="guide.html"><a href="guide.html"><i class="fa fa-check"></i><b>2</b> Assignment Guide</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="Assignment.html"><a href="Assignment.html#part1"><i class="fa fa-check"></i><b>3.1</b> Part I: Structural Adaptation and Latitude</a></li>
-<li class="chapter" data-level="3.2" data-path="Assignment.html"><a href="Assignment.html#part2"><i class="fa fa-check"></i><b>3.2</b> Part II: Structural Adaptations and Plant Categories</a></li>
-<li class="chapter" data-level="3.3" data-path="Assignment.html"><a href="Assignment.html#instructions"><i class="fa fa-check"></i><b>3.3</b> Formatting Instructions</a></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="guide.html"><a href="guide.html"><i class="fa fa-check"></i><b>4</b> Assignment Guide</a>
-<ul>
-<li class="chapter" data-level="4.1" data-path="guide.html"><a href="guide.html#t.test"><i class="fa fa-check"></i><b>4.1</b> Sample with t.test</a></li>
+<li class="chapter" data-level="2.1" data-path="guide.html"><a href="guide.html#t.test"><i class="fa fa-check"></i><b>2.1</b> Sample with t.test</a></li>
 </ul></li>
 </ul>
 
@@ -165,24 +158,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="getting-started-and-learning-r" class="section level1" number="1">
 <h1><span class="header-section-number">1</span> Getting started and Learning R</h1>
-<p>We are increasing the focus on quantitative skills in our Biology curriculum, in response to changing demands and emphasis within the field of biology itself. In Biology of Plants (BIOL 2010) we are introducing students to R software and basic statistical concepts.</p>
-<p>The <a href="https://ahurford.github.io/quant-guide-all-courses/">quantitative training guide</a> has been writing to teach MUN biology students R coding to build a foundation for more advanced quantitative analysis of data in upper year Biology courses. We anticipate that this guide will also be a useful resource manual that you will refer back to as you use R in your future courses.</p>
-<ol style="list-style-type: decimal">
-<li><p>Read <a href="https://ahurford.github.io/quant-guide-all-courses/">Introduction</a>. As you read through the next sections, if you encounter a word you do not understand you may wish to consult the <a href="https://ahurford.github.io/quant-guide-all-courses/glossary.html">Glossary</a>.</p></li>
-<li><p>Follow the steps in <a href="https://ahurford.github.io/quant-guide-all-courses/install.html">R and RStudio</a> to install R and RStudio. If you are having issues with installing the software, check the <a href="https://ahurford.github.io/BIOL-1001/%5Bhttps://ahurford.github.io/quant-guide-all-courses/faq.html">Frequently Asked Questions</a>.</p></li>
-<li><p>Read <a href="https://ahurford.github.io/quant-guide-all-courses/rstudio.html">Finding your way around RStudio</a>. Have your RStudio software open.</p></li>
-</ol>
-<ul>
-<li><p>When you encounter <strong>TRY IT!</strong> or courier font text in a grey box, this is an example of code that we want you to try in RStudio. Note that you should type the code exactly as it is written.</p></li>
-<li><p>When you encounter EXERCISE or <strong>HAND IN</strong> this is a question that your laboratory instructor may ask you to complete and hand in.</p></li>
-<li><p>You may wish to re-size the windows on your computer to view both the quantitative training guide and the RStudio software, or you may wish to view the training guide on a tablet, with the software open on your computer.</p></li>
-</ul>
-<ol start="4" style="list-style-type: decimal">
-<li><p>Work through <a href="https://ahurford.github.io/quant-guide-all-courses/rintro.html">Introduction to R</a>. We will sometimes give you only part of the code, or we will give code that has a deliberate mistake in it. This is not to frustrate you - rather it is a way for you to start to develop your problem solving skills. Read the text before and after the example code carefully for clues as to what you should do.</p></li>
-<li><p>Proceed through the sections as assigned by your lab instructor.</p></li>
-</ol>
-<p>Expect to get stuck. This is normal when learning a new skill. Everyone who uses R, including professionals who have used it for years, gets error messages and have bugs in their code. You might look for help in <a href="https://ahurford.github.io/quant-guide-all-courses/help.html">Getting help</a> or ask for help from an instructor as specified in section <a href="https://ahurford.github.io/BIOL-1001/howtoask.html#howtoask">3</a>.</p>
-<p>Once you’ve finished the first-year labs, don’t forget that you have this resource. Whenever you practice using R you will get better at it. If you haven’t used it for a while, your skills get rusty, but by reviewing the relevant sections of the <a href="https://ahurford.github.io/quant-guide-all-courses/">quantitative training guide</a> you will quickly be able to catch up. Before you know it, you will be confidently doing quantitative work in R, which will increase your knowledge, enhance your ability to do advanced biology work, and give you a marketable skill in the work world.</p>
+<p>If you have not used <code>R</code> previously, we recommend that you work through Chapters 1 to 9 of the <a href="https://ahurford.github.io/quant-guide-all-courses/">Quantitative training guide</a>, which includes instructions on how to install <code>R</code> on a computer.</p>
 </div>
             </section>
 
@@ -190,7 +166,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 
-<a href="background-information.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="guide.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2 Assignment Guide | A walk through the woods</title>
+  <title>A walk through the woods</title>
   <meta name="description" content="Guide a to Walk through woods Assignment" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2 Assignment Guide | A walk through the woods" />
+  <meta property="og:title" content="A walk through the woods" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="atellezcastr/walkThroughWoodsGuide" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2 Assignment Guide | A walk through the woods" />
+  <meta name="twitter:title" content="A walk through the woods" />
   
   <meta name="twitter:description" content="Guide a to Walk through woods Assignment" />
   
@@ -29,7 +29,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
+
 
 <script src="libs/header-attrs-2.8/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
@@ -131,11 +131,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Getting started and Learning R</a></li>
-<li class="chapter" data-level="2" data-path="guide.html"><a href="guide.html"><i class="fa fa-check"></i><b>2</b> Assignment Guide</a>
-<ul>
-<li class="chapter" data-level="2.1" data-path="guide.html"><a href="guide.html#t.test"><i class="fa fa-check"></i><b>2.1</b> Sample with t.test</a></li>
-</ul></li>
+<li class="chapter" data-level="" data-path=""><a href="#getting-started-and-learning-r"><i class="fa fa-check"></i>Getting started and Learning R</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#assignment-guide"><i class="fa fa-check"></i>Assignment Guide</a></li>
+<li class="chapter" data-level="0.1" data-path=""><a href="#t.test"><i class="fa fa-check"></i><b>0.1</b> Sample with t.test</a></li>
 </ul>
 
       </nav>
@@ -153,21 +151,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="guide" class="section level1" number="2">
-<h1><span class="header-section-number">2</span> Assignment Guide</h1>
+<div id="header">
+<h1 class="title">A walk through the woods</h1>
+</div>
+<div id="getting-started-and-learning-r" class="section level2 unnumbered">
+<h2>Getting started and Learning R</h2>
+<p>If you have not used <code>R</code> previously, we recommend that you work through Chapters 1 to 9 of the <a href="https://ahurford.github.io/quant-guide-all-courses/">Quantitative training guide</a>, which includes instructions on how to install <code>R</code> on a computer.</p>
+</div>
+<div id="assignment-guide" class="section level2 unnumbered">
+<h2>Assignment Guide</h2>
 <p>Let’s explore the data!</p>
 <ol style="list-style-type: decimal">
-<li><p>Review <a href="https://ahurford.github.io/quant-guide-all-courses/style.html">7 Best Practices</a> chapter of <a href="https://ahurford.github.io/quant-guide-all-courses/">Quantitative skills for biology</a>. It is best to make a folder on your computer Desktop where you will work on this assignment and stay organized.</p></li>
+<li><p>It is best to make a folder on your computer Desktop where you will work on this assignment (if needed, review <a href="https://ahurford.github.io/quant-guide-all-courses/style.html">Best Practices</a>).</p></li>
 <li><p>Download the file <code>woods.csv</code> (from the course BrightSpace) to the folder you made.</p></li>
-<li><p>Review <a href="https://ahurford.github.io/quant-guide-all-courses/data-entry.html#loading-or-importing-data">8.2 Loading or importing data</a>. Open and save a new R Script in your folder (see <a href="https://ahurford.github.io/quant-guide-all-courses/rstudio.html#source-pane%5D">3.2 Source Pane</a> if you are unsure how to do this). One of the first commands of your R Script will be to load your data, for example:</p></li>
+<li><p><a href="https://ahurford.github.io/quant-guide-all-courses/rstudio.html#source-pane%5D">Open and save a new R Script</a> your folder. One of the first commands of your R Script will be to <a href="https://ahurford.github.io/quant-guide-all-courses/data-entry.html#loading-or-importing-data">load your data</a>. For example:</p></li>
 </ol>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="guide.html#cb1-1" aria-hidden="true" tabindex="-1"></a>data1 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">&quot;woods.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data1 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">&quot;woods.csv&quot;</span>)</span></code></pre></div>
 <ol start="4" style="list-style-type: decimal">
 <li>In the <a href="https://ahurford.github.io/quant-guide-all-courses/rstudio.html#console-pane">Console</a>, inspect your data to check that it has loaded. For example:</li>
 </ol>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="guide.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data1)</span></code></pre></div>
-<div class="line-block">  If your data has not loaded, the most likely problem is a spelling error or problems with specifying the<br />
-  <a href="https://ahurford.github.io/quant-guide-all-courses/rintro.html#working-directory">path</a> to <code>woods.csv</code>. You might try:</div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data1)</span></code></pre></div>
+<p>If your data has not loaded, the most likely problem is a spelling error or problems with specifying the <a href="https://ahurford.github.io/quant-guide-all-courses/rintro.html#working-directory">path</a> to <code>woods.csv</code>. You might try:</p>
 <ul>
 <li><p>the <a href="https://ahurford.github.io/quant-guide-all-courses/data-entry.html#the-rstudio-way-the-import-feature">RStudio way</a> of importing your data, or</p></li>
 <li><p>moving <code>woods.csv</code> to your <a href="https://ahurford.github.io/quant-guide-all-courses/data-entry.html#the-rstudio-way-the-import-feature">working directory</a>.</p></li>
@@ -191,7 +195,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>Reference</strong></p>
 <p>Zanne, A. E., Westoby, M., Falster, D. S., Ackerly, D. D., Loarie, S. R., Arnold, S. E. J., &amp; Coomes, D. A. (2010). Angiosperm wood structure: Global patterns in vessel anatomy and their relation to wood density and potential conductivity. American Journal of Botany, 97(2), 207–215. <a href="https://doi.org/10.3732/ajb.0900178" class="uri">https://doi.org/10.3732/ajb.0900178</a></p>
 </blockquote>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="guide.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data1)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data1)</span></code></pre></div>
 <pre><code>##          Family                   Binomial        A.mm N.mm          F
 ## 1    Rhamnaceae      Krugiodendron ferreum 0.002922467   45 0.13151099
 ## 2      Fabaceae          Tamarindus indica 0.010386891    9 0.09348202
@@ -207,28 +211,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 5 -1.735527 0.6020600 -1.1334673 1.20 10.000000
 ## 6 -2.414714 1.3979400 -1.0167740 1.18        NA</code></pre>
 <ol start="6" style="list-style-type: decimal">
-<li>You will want to do some exploration of your data. See <a href="https://ahurford.github.io/quant-guide-all-courses/data-entry.html#handling-the-data">8.4 Handling the data</a> for how to recover the names of the columns for all the data.</li>
+<li>You will want to do some exploration of your data. See <a href="https://ahurford.github.io/quant-guide-all-courses/data-entry.html#handling-the-data">Handling the data</a> for how to recover the names of the columns for all the data.</li>
 </ol>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="guide.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(data1)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(data1)</span></code></pre></div>
 <pre><code>##  [1] &quot;Family&quot;   &quot;Binomial&quot; &quot;A.mm&quot;     &quot;N.mm&quot;     &quot;F&quot;        &quot;logA&quot;    
 ##  [7] &quot;logN&quot;     &quot;logF&quot;     &quot;Dens&quot;     &quot;AbsLat&quot;</code></pre>
 <ol start="7" style="list-style-type: decimal">
-<li>It is now helpful to think about the data given your knowledge of Botany. Do you hypothesize a relationship between the data in any of the columns? You might start investigating your hypothesis by making a plot, for example, showing the <code>Average cross-sectional vessel area</code> and <code>the number of vessels</code>. To extract a column of the data, see <a href="https://ahurford.github.io/quant-guide-all-courses/data-entry.html#handling-the-data">8.4 Handling the data</a>.</li>
+<li>It is now helpful to think about the data given your knowledge of Botany. Do you hypothesize a relationship between the data in any of the columns? You might start investigating your hypotheses by making a plot, for example, showing the <code>Average cross-sectional vessel area</code> and <code>the number of vessels</code>. To extract a column of the data, see <a href="https://ahurford.github.io/quant-guide-all-courses/data-entry.html#handling-the-data">Handling the data</a>.</li>
 </ol>
-<div class="line-block">  For the <code>Average cross sectional vessel area</code>, in the <em>Console</em>, try:</div>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="guide.html#cb7-1" aria-hidden="true" tabindex="-1"></a>data1<span class="sc">$</span>A.mm</span></code></pre></div>
-<div class="line-block">  Be sure to type exactly <code>A.mm</code> after the <code>$</code>. Try making your plot:</div>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="guide.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(data1<span class="sc">$</span>N.mm,data1<span class="sc">$</span>A.mm, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">xlab =</span> <span class="st">&quot;Average cross sectional vessel area&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Number of vessels per unit cross sectional area&quot;</span>, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<p>For the <code>Average cross sectional vessel area</code>, in the <code>Console</code>, try:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>data1<span class="sc">$</span>A.mm</span></code></pre></div>
+<p>Be sure to type exactly <code>A.mm</code> after the <code>$</code>. Try making your plot:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(data1<span class="sc">$</span>N.mm,data1<span class="sc">$</span>A.mm, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">xlab =</span> <span class="st">&quot;Average cross sectional vessel area&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Number of vessels per unit cross sectional area&quot;</span>, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
 <p><img src="walktwoods_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
-<div class="line-block">  <strong>The column names precisely as they appear in the output</strong> of <code>names(data1)</code> or RStudio will produce<br />
-  an error.</div>
+<p>You need to write the column names precisely as they appear in the output of <code>names(data1)</code> or RStudio will produce an error.</p>
 <ol start="8" style="list-style-type: decimal">
 <li><p>Can you make a plot of different variables, for example, <code>Wood density</code> and <code>Average of the absolute value of latitude</code>?</p></li>
 <li><p>What happens if you type <code>plot(data1$Family, data1$Binomial)</code> in the <code>Console</code>? Why is this not a very sensible choice for something to plot?</p></li>
 <li><p>To analyze the relation between variables we can use the <code>cor(x,y,method = "pearson")</code> function.</p></li>
 </ol>
-<div id="t.test" class="section level2" number="2.1">
-<h2><span class="header-section-number">2.1</span> Sample with t.test</h2>
+</div>
+<div id="t.test" class="section level2" number="0.1">
+<h2><span class="header-section-number">0.1</span> Sample with t.test</h2>
 <p>A one sample test of means compares the mean of one sample to another sample or a pre-specified value and tests for a deviation from that value. More information can be found under [10. Statistics in R] (<a href="https://ahurford.github.io/quant-guide-all-courses/statistics.html" class="uri">https://ahurford.github.io/quant-guide-all-courses/statistics.html</a>) of the <a href="https://ahurford.github.io/quant-guide-all-courses/">Quantitative Guide</a>.</p>
 <p></br></p>
 <p>This section will give a brief overview of how to perform a sample t-test to compare the average cross-sectional vessel area between tall and short plants.</p>
@@ -238,31 +242,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Tall (Average plant height greater than 3 meters)</li>
 </ul>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="guide.html#cb9-1" aria-hidden="true" tabindex="-1"></a>cat1 <span class="ot">&lt;-</span>data1[<span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>,<span class="dv">0</span><span class="sc">:</span><span class="dv">3</span>]</span>
-<span id="cb9-2"><a href="guide.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cat1)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>cat1 <span class="ot">&lt;-</span>data1[<span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>,<span class="dv">0</span><span class="sc">:</span><span class="dv">3</span>]</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cat1)</span></code></pre></div>
 <ul>
 <li>Short (Average plant height less than 3 meters)</li>
 </ul>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="guide.html#cb10-1" aria-hidden="true" tabindex="-1"></a>cat2 <span class="ot">&lt;-</span> data1[<span class="dv">11</span><span class="sc">:</span><span class="dv">20</span>,<span class="dv">0</span><span class="sc">:</span><span class="dv">3</span>]</span>
-<span id="cb10-2"><a href="guide.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cat2)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>cat2 <span class="ot">&lt;-</span> data1[<span class="dv">11</span><span class="sc">:</span><span class="dv">20</span>,<span class="dv">0</span><span class="sc">:</span><span class="dv">3</span>]</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cat2)</span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>After creating two variables that contain the two groups, calculate the means and the standard deviations of both groups.</li>
 </ol>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="guide.html#cb11-1" aria-hidden="true" tabindex="-1"></a>mean1 <span class="ot">&lt;-</span> <span class="fu">mean</span>(cat1[,<span class="dv">3</span>])</span>
-<span id="cb11-2"><a href="guide.html#cb11-2" aria-hidden="true" tabindex="-1"></a>mean2 <span class="ot">&lt;-</span> <span class="fu">mean</span>(cat2[,<span class="dv">3</span>])</span>
-<span id="cb11-3"><a href="guide.html#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="guide.html#cb11-4" aria-hidden="true" tabindex="-1"></a>sd1 <span class="ot">&lt;-</span> <span class="fu">sd</span>(cat1[,<span class="dv">3</span>])</span>
-<span id="cb11-5"><a href="guide.html#cb11-5" aria-hidden="true" tabindex="-1"></a>sd2 <span class="ot">&lt;-</span> <span class="fu">sd</span>(cat2[,<span class="dv">3</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>mean1 <span class="ot">&lt;-</span> <span class="fu">mean</span>(cat1[,<span class="dv">3</span>])</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>mean2 <span class="ot">&lt;-</span> <span class="fu">mean</span>(cat2[,<span class="dv">3</span>])</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>sd1 <span class="ot">&lt;-</span> <span class="fu">sd</span>(cat1[,<span class="dv">3</span>])</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>sd2 <span class="ot">&lt;-</span> <span class="fu">sd</span>(cat2[,<span class="dv">3</span>])</span></code></pre></div>
 <ol start="3" style="list-style-type: decimal">
 <li>Once you’ve calculated the mean and standard deviation of the two groups, plot the results to compare the two groups.</li>
 </ol>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="guide.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">c</span>(mean1,mean2), <span class="at">names.arg =</span> <span class="fu">c</span>(<span class="st">&#39;cat1&#39;</span>,<span class="st">&#39;cat2&#39;</span>), <span class="at">main =</span><span class="st">&quot;Average cross sectional vessel area&quot;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.0125</span>), <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&#39;blue&#39;</span>,<span class="st">&#39;blue&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">c</span>(mean1,mean2), <span class="at">names.arg =</span> <span class="fu">c</span>(<span class="st">&#39;cat1&#39;</span>,<span class="st">&#39;cat2&#39;</span>), <span class="at">main =</span><span class="st">&quot;Average cross sectional vessel area&quot;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.0125</span>), <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&#39;blue&#39;</span>,<span class="st">&#39;blue&#39;</span>))</span></code></pre></div>
 <p><img src="walktwoods_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 <p>This method can be helpful to visualize the difference between two groups but challenging to determine if the groups are significantly different or not due to random chance.</p>
 <ol start="4" style="list-style-type: decimal">
 <li>Performing a t-test allows us to determine if the groups are statistically different and measures the probability that an observed difference could have occurred just by random chance. Here, we want to evaluate <span class="math inline">\(\alpha = 0.05\)</span>, indicating that we are comfortable with a 5% risk of concluding a difference exists when there is no difference. If our p-value is greater than <span class="math inline">\(\alpha\)</span>, both means are not statistically different (based on the datasets). Although, if the p-value is less than <span class="math inline">\(\alpha\)</span> then both means are statistically different:</li>
 </ol>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="guide.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(cat1[,<span class="dv">3</span>], cat2[,<span class="dv">3</span>], <span class="at">alternative =</span> <span class="st">&#39;two.sided&#39;</span>,<span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(cat1[,<span class="dv">3</span>], cat2[,<span class="dv">3</span>], <span class="at">alternative =</span> <span class="st">&#39;two.sided&#39;</span>,<span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## 
 ##  Paired t-test
 ## 
@@ -278,13 +282,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>More information about <a href="https://ahurford.github.io/quant-guide-all-courses/statistics.html#t.test">t.tests</a> are within the <a href="https://ahurford.github.io/quant-guide-all-courses/statistics.html">Statistics in R</a> section of the <a href="https://ahurford.github.io/quant-guide-all-courses/">Quantitative Skills for Biology guide</a>.</p>
 
 </div>
-</div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
 
     </div>
   </div>

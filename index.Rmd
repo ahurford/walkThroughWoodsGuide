@@ -7,70 +7,146 @@ github-repo: atellezcastr/walkThroughWoodsGuide
 description: "Guide a to Walk through woods Assignment"
 ---
 
-# Getting started and Learning R
+## Getting started and Learning R {-}
 
-We are increasing the focus on quantitative skills in our Biology curriculum, in response to changing demands and emphasis within the field of biology itself. In Biology of Plants (BIOL 2010) we are introducing students to R software and basic statistical concepts.
+If you have not used `R` previously, we recommend that you work through Chapters 1 to 9 of the [Quantitative training guide](https://ahurford.github.io/quant-guide-all-courses/), which includes instructions on how to install `R` on a computer.
 
-The [quantitative training guide](https://ahurford.github.io/quant-guide-all-courses/) has been writing to teach MUN biology students R coding to build a foundation for more advanced quantitative analysis of data in upper year Biology courses. We anticipate that this guide will also be a useful resource manual that you will refer back to as you use R in your future courses.
+## Assignment Guide {-}
 
-1.  Read [Introduction](https://ahurford.github.io/quant-guide-all-courses/). As you read through the next sections, if you encounter a word you do not understand you may wish to consult the [Glossary](https://ahurford.github.io/quant-guide-all-courses/glossary.html).
+Let's explore the data!
 
-2.  Follow the steps in [R and RStudio](https://ahurford.github.io/quant-guide-all-courses/install.html) to install R and RStudio. If you are having issues with installing the software, check the [Frequently Asked Questions](https://ahurford.github.io/BIOL-1001/%5Bhttps://ahurford.github.io/quant-guide-all-courses/faq.html).
+1.  It is best to make a folder on your computer Desktop where you will work on this assignment (if needed, review [Best Practices](https://ahurford.github.io/quant-guide-all-courses/style.html)).
 
-3.  Read [Finding your way around RStudio](https://ahurford.github.io/quant-guide-all-courses/rstudio.html). Have your RStudio software open.
+2.  Download the file `woods.csv` (from the course BrightSpace) to the folder you made.
 
--   When you encounter **TRY IT!** or courier font text in a grey box, this is an example of code that we want you to try in RStudio. Note that you should type the code exactly as it is written.
+3.  [Open and save a new R Script](https://ahurford.github.io/quant-guide-all-courses/rstudio.html#source-pane%5D) your folder. One of the first commands of your R Script will be to [load your data](https://ahurford.github.io/quant-guide-all-courses/data-entry.html#loading-or-importing-data). For example:
 
--   When you encounter EXERCISE or **HAND IN** this is a question that your laboratory instructor may ask you to complete and hand in.
+```{r}
+data1 <- read.csv(file = "woods.csv")
+```
 
--   You may wish to re-size the windows on your computer to view both the quantitative training guide and the RStudio software, or you may wish to view the training guide on a tablet, with the software open on your computer.
+4.  In the [Console](https://ahurford.github.io/quant-guide-all-courses/rstudio.html#console-pane), inspect your data to check that it has loaded. For example:
 
-4.  Work through [Introduction to R](https://ahurford.github.io/quant-guide-all-courses/rintro.html). We will sometimes give you only part of the code, or we will give code that has a deliberate mistake in it. This is not to frustrate you - rather it is a way for you to start to develop your problem solving skills. Read the text before and after the example code carefully for clues as to what you should do.
+```{r, results=FALSE}
+head(data1)
+```
 
-5.  Proceed through the sections as assigned by your lab instructor.
+If your data has not loaded, the most likely problem is a spelling error or problems with specifying the [path](https://ahurford.github.io/quant-guide-all-courses/rintro.html#working-directory) to `woods.csv`. You might try:
 
-Expect to get stuck. This is normal when learning a new skill. Everyone who uses R, including professionals who have used it for years, gets error messages and have bugs in their code. You might look for help in [Getting help](https://ahurford.github.io/quant-guide-all-courses/help.html) or ask for help from an instructor as specified in section [3](https://ahurford.github.io/BIOL-1001/howtoask.html#howtoask).
+-   the [RStudio way](https://ahurford.github.io/quant-guide-all-courses/data-entry.html#the-rstudio-way-the-import-feature) of importing your data, or
 
-Once you've finished the first-year labs, don't forget that you have this resource. Whenever you practice using R you will get better at it. If you haven't used it for a while, your skills get rusty, but by reviewing the relevant sections of the [quantitative training guide](https://ahurford.github.io/quant-guide-all-courses/) you will quickly be able to catch up. Before you know it, you will be confidently doing quantitative work in R, which will increase your knowledge, enhance your ability to do advanced biology work, and give you a marketable skill in the work world.
+-   moving `woods.csv` to your [working directory](https://ahurford.github.io/quant-guide-all-courses/data-entry.html#the-rstudio-way-the-import-feature).
 
-# Background Information 
+5.  After importing the data into R, read through the metadata file (below) to better understand the data.
 
-Plant can grow in length (primary growth) and girth (secondary growth). *Primary growth* increases the plant height/root length. This growth occurs via cell division at apical meristems located at the tip of shoots and roots. *Secondary growth* increases the circumference of shoots/roots. This growth occurs via cell division at the lateral meristems (vascular cambium and cork cambium). Only woody plants exhibit secondary growth (herbaceous plants do not).
+> **Metadata Overview** Original Article Data used in this exerise originates from a Zanne, A. E., et al. (2010) study. The full article reference can be found below.
+>
+> **Columns in the data frame**
+>
+> Column 1: Family - The taxonomic family of the plant
+>
+> Column 2: Binomial - Refers to the genus and species for each plant
+>
+> Column 3: Amm - Average cross-sectional vessel area (in $mm^2$)
+>
+> Column 4: Nnn - Number of vessels per unit cross section area (in $mm^2$)
+>
+> Column 5: F - (F = $\frac{Amm^2}{Nmm^2}$ Fraction of cross sectional area that is in vessels (in $mm^2/mm^2$)
+>
+> Column 6: logA - log10 transformation of Amm (in $mm^2$)
+>
+> Column 7: logN - log10 transformation of Nmm (in $mm^2$)
+>
+> Column 8: logF - log10 transformation of F (in $\frac{Amm^2}{Nmm^2}$
+>
+> Column 9: Dens - Wood density measurement
+>
+> Column 10: AbsLat - Average of the absolute value of latitude (in degrees)
+>
+> **Reference**
+>
+> Zanne, A. E., Westoby, M., Falster, D. S., Ackerly, D. D., Loarie, S. R., Arnold, S. E. J., & Coomes, D. A. (2010). Angiosperm wood structure: Global patterns in vessel anatomy and their relation to wood density and potential conductivity. American Journal of Botany, 97(2), 207--215. <https://doi.org/10.3732/ajb.0900178>
 
-Plant stems have several functions, including support, transport and storage. Stems are made of a variety of tissues that help carry out these functions. The stems of angiosperms (flowering plants) contain several different cells and tissue types, including:
+```{r}
+head(data1)
+```
 
--   Parenchyma: thin-walled living cells that are responsible for storage and some radial transport over small distances
+6.  You will want to do some exploration of your data. See [Handling the data](https://ahurford.github.io/quant-guide-all-courses/data-entry.html#handling-the-data) for how to recover the names of the columns for all the data.
 
--   Fibres: thick-walled cells with smaller lumens that are responsible for support and
+```{r}
+names(data1)
+```
 
--   Vessels: dead cells with large lumens that are responsible for water transport
+7.  It is now helpful to think about the data given your knowledge of Botany. Do you hypothesize a relationship between the data in any of the columns? You might start investigating your hypotheses by making a plot, for example, showing the `Average cross-sectional vessel area` and `the number of vessels`. To extract a column of the data, see [Handling the data](https://ahurford.github.io/quant-guide-all-courses/data-entry.html#handling-the-data).
 
-**The relative amount of specific tissue types varies in different plants (and their stems) depending on which functions are most important to survival in a plant's given environment. STRUCTURE = FUNCTION.** Structures used for one function may not be the best for another function and this often results in competing requirements for space and resources within the stem. Thus, there will be trade-offs in tissue allocation in stems. **BALANCE.**
+For the `Average cross sectional vessel area`, in the `Console`, try:
 
-**Fast vs. safe transport:**
+```{r, results=FALSE}
+data1$Amm
+```
 
-A smaller number of large vessels will transport water faster than a large number of small vessels (due to less resistance to the flow of water). However, larger vessels come with their problems as they are at higher risk for embolisms (air bubbles) which block fluid flow. Embolisms can be caused in vessels by freezing (when air bubbles come out of solutions as water thaws) and drought (when air is sucked from one air filled vessel to another via pores between the vessels).
+Be sure to type exactly `Amm` after the `$`. Try making your plot:
 
-**Transport vs. mechanical support:**
+```{r}
+plot(data1$N.mm,data1$A.mm, pch = 19, xlab = "Average cross sectional vessel area", ylab = "Number of vessels per unit cross sectional area", col="blue")
+```
 
-Many vessels in a stem allow for a lot of water transport, but this leaves less space for fibres, which provide mechanical support (and vice versa). A stem with more vessels and fewer fibres would be weaker than a stem with fewer vessels and more fibres.
+You need to write the column names precisely as they appear in the output of `names(data1)` or RStudio will produce an error.
 
-**Wood Density:**
+8.  Can you make a plot of different variables, for example, `Wood density` and `Average of the absolute value of latitude`?
 
-Wood density is a function of the number of different tissue types within the stem and is related to ecological and environmental factors. Wood density typically ranges from 0.1-1.2 $g/cm^{3}$ (the density of water is 1 $g/cm^{3}$). A stem with lots of vessels or large vessels would be less dense (as vessels are hollow) than a stem with little vessel tissue (because of more fibres).
+9.  What happens if you type `plot(data1$Family, data1$Binomial)` in the `Console`? Why is this not a very sensible choice for something to plot?
 
-Dense Wood:
+10. To analyze the relation between variables we can use the `cor(x,y,method = "pearson")` function.
 
--   Has better mechanical strength (fewer hollow vessels)
+## Sample with t.test {#t.test}
 
--   Is better able to avoid embolisms related to drought (smaller vessels)
+A one sample test of means compares the mean of one sample to another sample or a pre-specified value and tests for a deviation from that value. More information can be found under [10. Statistics in R] (<https://ahurford.github.io/quant-guide-all-courses/statistics.html>) of the [Quantitative Guide](https://ahurford.github.io/quant-guide-all-courses/).
 
--   Is found in species with slower growth and lower mortality (slower transport)
+</br>
 
--   Has a lower decay rate, thus slower carbon turnover rates
+This section will give a brief overview of how to perform a sample t-test to compare the average cross-sectional vessel area between tall and short plants.
 
-**Other relevant considerations:** Lianas are climbing flowering vines, because they climb and are not free standing, they have less need for mechanical strength and therefore can have more vessels and larger vessels.
+1.  First, produce two variables that contain the two categories of plants you want to investigate.
 
-Some temperate species are known as ring porous species; as they grow, they make large vessels in the spring when water is abundant and smaller ones in the summer when there is less water. Other temperate species are diffuse porous species with smaller vessels (water abundance is the same year-round, relatively lower than tropical). Tropical species are generally diffuse porous with large vessels (water abundance is the same year-round, relatively higher than tropical).
+-   Tall (Average plant height greater than 3 meters)
 
-Which of the above species would be more likely to leaf out earlier in the spring? Why do temperate species have smaller vessels than tropical species? If you are unsure, re-read the background information or ask for clarification.
+```{r, results=F}
+cat1 <-data1[0:10,0:3]
+head(cat1)
+```
+
+-   Short (Average plant height less than 3 meters)
+
+```{r, results=F}
+cat2 <- data1[11:20,0:3]
+head(cat2)
+```
+
+2.  After creating two variables that contain the two groups, calculate the means and the standard deviations of both groups.
+
+```{r, results=F}
+mean1 <- mean(cat1[,3])
+mean2 <- mean(cat2[,3])
+
+sd1 <- sd(cat1[,3])
+sd2 <- sd(cat2[,3])
+```
+
+3.  Once you've calculated the mean and standard deviation of the two groups, plot the results to compare the two groups.
+
+```{r}
+barplot(c(mean1,mean2), names.arg = c('cat1','cat2'), main ="Average cross sectional vessel area", ylim = c(0,0.0125), col = c('blue','blue'))
+```
+
+This method can be helpful to visualize the difference between two groups but challenging to determine if the groups are significantly different or not due to random chance.
+
+4.  Performing a t-test allows us to determine if the groups are statistically different and measures the probability that an observed difference could have occurred just by random chance. Here, we want to evaluate $\alpha = 0.05$, indicating that we are comfortable with a 5% risk of concluding a difference exists when there is no difference. If our p-value is greater than $\alpha$, both means are not statistically different (based on the datasets). Although, if the p-value is less than $\alpha$ then both means are statistically different:
+
+```{r}
+t.test(cat1[,3], cat2[,3], alternative = 'two.sided',paired = TRUE)
+```
+
+From the output above, we see that the $p-value = 0.9589$, indicating that there is not a statistical difference in the average cross sectional vessel area between tall and short plants. Therefore, we can accept the null hypothesis that there is no difference in vessel area between tall and short plants.
+
+More information about [t.tests](https://ahurford.github.io/quant-guide-all-courses/statistics.html#t.test) are within the [Statistics in R](https://ahurford.github.io/quant-guide-all-courses/statistics.html) section of the [Quantitative Skills for Biology guide](https://ahurford.github.io/quant-guide-all-courses/).
