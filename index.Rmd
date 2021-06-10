@@ -7,13 +7,13 @@ github-repo: atellezcastr/walkThroughWoodsGuide
 description: "Guide a to Walk through woods Assignment"
 ---
 
-## Getting started and Learning R {-}
+# Getting started and Learning R {-}
 
 If you have not used `R` previously, we recommend that you work through Chapters 1 to 9 of the [Quantitative training guide](https://ahurford.github.io/quant-guide-all-courses/), which includes instructions on how to install `R` on a computer.
 
-## Assignment Guide {-}
+# How to do the analysis in R {-}
 
-Let's explore the data!
+Let's explore the _A walk through the woods_ data!
 
 1.  It is best to make a folder on your computer Desktop where you will work on this assignment (if needed, review [Best Practices](https://ahurford.github.io/quant-guide-all-courses/style.html)).
 
