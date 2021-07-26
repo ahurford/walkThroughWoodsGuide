@@ -9,7 +9,7 @@ description: "Guide a to Walk through woods Assignment"
 
 # Getting started and Learning R {-}
 
-If you have not used `R` previously, we recommend that you work through Chapters 1 to 9 of the [Quantitative training guide](https://ahurford.github.io/quant-guide-all-courses/), which includes instructions on how to install `R` on a computer.
+If you have not used `R` previously, we recommend that you work through Chapters 1 to 10 of the [Quantitative training guide](https://ahurford.github.io/quant-guide-all-courses/), which includes instructions on how to install `R` on a computer.
 
 # How to do the analysis in R {-}
 
@@ -71,13 +71,15 @@ If your data has not loaded, the most likely problem is a spelling error or prob
 head(data1)
 ```
 
-6.  You will want to do some exploration of your data. See [Handling the data](https://ahurford.github.io/quant-guide-all-courses/data-entry.html#handling-the-data) for how to recover the names of the columns for all the data.
+6.  You will want to do some exploration of your data. See [Handling the data](https://ahurford.github.io/quant-guide-all-courses/handling-data.html) for how to recover the names of the columns for all the data.
 
 ```{r}
 names(data1)
 ```
 
-7.  It is now helpful to think about the data given your knowledge of Botany. Do you hypothesize a relationship between the data in any of the columns? You might start investigating your hypotheses by making a plot, for example, showing the `Average cross-sectional vessel area` and `the number of vessels`. To extract a column of the data, see [Handling the data](https://ahurford.github.io/quant-guide-all-courses/data-entry.html#handling-the-data).
+7.  It is now helpful to think about the data given your knowledge of Botany. Do you hypothesize a relationship between the data in any of the columns? You might start investigating your hypotheses by making a plot, for example, showing the `Average cross-sectional vessel area` and `the number of vessels`. To extract a column of the data, see [Handling the data](https://ahurford.github.io/quant-guide-all-courses/handling-data.html). You may use either the base R approach or use the `dplyr` package:
+
+**Base R**
 
 For the `Average cross sectional vessel area`, in the `Console`, try:
 
@@ -92,6 +94,13 @@ plot(data1$N.mm,data1$A.mm, pch = 19, xlab = "Average cross sectional vessel are
 ```
 
 You need to write the column names exactly as they appear in the output of `names(data1)` or RStudio will produce an error.
+
+**dplyr**
+
+To use the [`dplyr` functions](https://ahurford.github.io/quant-guide-all-courses/handling-data.html#dplyr) you need to load the package (and [install](https://ahurford.github.io/quant-guide-all-courses/rintro.html#r-packages) if you have not already done so):
+```{r,message=F}
+library(dplyr)
+```
 
 8.  Can you make a [plot](https://ahurford.github.io/quant-guide-all-courses/graph.html#scatter-plots-with-plotxy) of different variables, for example, `Wood density` and `Average of the absolute value of latitude`?
 

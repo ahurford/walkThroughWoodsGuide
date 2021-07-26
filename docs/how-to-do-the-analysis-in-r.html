@@ -31,7 +31,7 @@
   
 <link rel="prev" href="index.html"/>
 
-<script src="libs/header-attrs-2.8/header-attrs.js"></script>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -206,20 +206,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 5 -1.735527 0.6020600 -1.1334673 1.20 10.000000
 ## 6 -2.414714 1.3979400 -1.0167740 1.18        NA</code></pre>
 <ol start="6" style="list-style-type: decimal">
-<li>You will want to do some exploration of your data. See <a href="https://ahurford.github.io/quant-guide-all-courses/data-entry.html#handling-the-data">Handling the data</a> for how to recover the names of the columns for all the data.</li>
+<li>You will want to do some exploration of your data. See <a href="https://ahurford.github.io/quant-guide-all-courses/handling-data.html">Handling the data</a> for how to recover the names of the columns for all the data.</li>
 </ol>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="how-to-do-the-analysis-in-r.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(data1)</span></code></pre></div>
 <pre><code>##  [1] &quot;Family&quot;   &quot;Binomial&quot; &quot;A.mm&quot;     &quot;N.mm&quot;     &quot;F&quot;        &quot;logA&quot;    
 ##  [7] &quot;logN&quot;     &quot;logF&quot;     &quot;Dens&quot;     &quot;AbsLat&quot;</code></pre>
 <ol start="7" style="list-style-type: decimal">
-<li>It is now helpful to think about the data given your knowledge of Botany. Do you hypothesize a relationship between the data in any of the columns? You might start investigating your hypotheses by making a plot, for example, showing the <code>Average cross-sectional vessel area</code> and <code>the number of vessels</code>. To extract a column of the data, see <a href="https://ahurford.github.io/quant-guide-all-courses/data-entry.html#handling-the-data">Handling the data</a>.</li>
+<li>It is now helpful to think about the data given your knowledge of Botany. Do you hypothesize a relationship between the data in any of the columns? You might start investigating your hypotheses by making a plot, for example, showing the <code>Average cross-sectional vessel area</code> and <code>the number of vessels</code>. To extract a column of the data, see <a href="https://ahurford.github.io/quant-guide-all-courses/handling-data.html">Handling the data</a>. You may use either the base R approach or use the <code>dplyr</code> package:</li>
 </ol>
+<p><strong>Base R</strong></p>
 <p>For the <code>Average cross sectional vessel area</code>, in the <code>Console</code>, try:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="how-to-do-the-analysis-in-r.html#cb7-1" aria-hidden="true" tabindex="-1"></a>data1<span class="sc">$</span>A.mm</span></code></pre></div>
 <p>Be sure to type exactly <code>A.mm</code> after the <code>$</code>. Try making your plot:</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="how-to-do-the-analysis-in-r.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(data1<span class="sc">$</span>N.mm,data1<span class="sc">$</span>A.mm, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">xlab =</span> <span class="st">&quot;Average cross sectional vessel area&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Number of vessels per unit cross sectional area&quot;</span>, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
 <p><img src="walktwoods_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>You need to write the column names exactly as they appear in the output of <code>names(data1)</code> or RStudio will produce an error.</p>
+<p><strong>dplyr</strong></p>
+<p>To use the <a href="https://ahurford.github.io/quant-guide-all-courses/handling-data.html#dplyr"><code>dplyr</code> functions</a> you need to load the package (and <a href="https://ahurford.github.io/quant-guide-all-courses/rintro.html#r-packages">install</a> if you have not already done so):</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="how-to-do-the-analysis-in-r.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
 <ol start="8" style="list-style-type: decimal">
 <li><p>Can you make a <a href="https://ahurford.github.io/quant-guide-all-courses/graph.html#scatter-plots-with-plotxy">plot</a> of different variables, for example, <code>Wood density</code> and <code>Average of the absolute value of latitude</code>?</p></li>
 <li><p>What happens if you type <code>plot(data1$Family, data1$Binomial)</code> in the <code>Console</code>? Why is this not a very sensible choice for something to plot?</p></li>
@@ -231,21 +235,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol style="list-style-type: decimal">
 <li>First, produce two variables that contain the data.</li>
 </ol>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="how-to-do-the-analysis-in-r.html#cb9-1" aria-hidden="true" tabindex="-1"></a>Rhamnaceae <span class="ot">=</span> data1[data1<span class="sc">$</span>Family<span class="sc">==</span><span class="st">&quot;Rhamnaceae&quot;</span>,]</span>
-<span id="cb9-2"><a href="how-to-do-the-analysis-in-r.html#cb9-2" aria-hidden="true" tabindex="-1"></a>Fabaceae <span class="ot">=</span> data1[data1<span class="sc">$</span>Family<span class="sc">==</span><span class="st">&quot;Fabaceae&quot;</span>,]</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="how-to-do-the-analysis-in-r.html#cb10-1" aria-hidden="true" tabindex="-1"></a>Rhamnaceae <span class="ot">=</span> data1[data1<span class="sc">$</span>Family<span class="sc">==</span><span class="st">&quot;Rhamnaceae&quot;</span>,]</span>
+<span id="cb10-2"><a href="how-to-do-the-analysis-in-r.html#cb10-2" aria-hidden="true" tabindex="-1"></a>Fabaceae <span class="ot">=</span> data1[data1<span class="sc">$</span>Family<span class="sc">==</span><span class="st">&quot;Fabaceae&quot;</span>,]</span></code></pre></div>
 <p>Note that we are using <code>[]</code> to extract specific rows and columns of <code>data1</code>. Observe that <code>data1$Family=="Rhamnaceae"</code> means we want all the rows where the family is “Rhamnaceae”, and the <code>,</code> indicates we would like all the columns. Type the following to understand more about these variables:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="how-to-do-the-analysis-in-r.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Rhamnaceae)</span>
-<span id="cb10-2"><a href="how-to-do-the-analysis-in-r.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Fabaceae)</span>
-<span id="cb10-3"><a href="how-to-do-the-analysis-in-r.html#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(Rhamnaceae[,<span class="dv">1</span>])</span>
-<span id="cb10-4"><a href="how-to-do-the-analysis-in-r.html#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(Fabaceae[,<span class="dv">1</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="how-to-do-the-analysis-in-r.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Rhamnaceae)</span>
+<span id="cb11-2"><a href="how-to-do-the-analysis-in-r.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Fabaceae)</span>
+<span id="cb11-3"><a href="how-to-do-the-analysis-in-r.html#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(Rhamnaceae[,<span class="dv">1</span>])</span>
+<span id="cb11-4"><a href="how-to-do-the-analysis-in-r.html#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(Fabaceae[,<span class="dv">1</span>])</span></code></pre></div>
 <p>The command <code>head()</code> reports the first 6 rows, and <code>length(Rhamnaceae[,1])</code> gives the length of column 1 of the variable <code>Rhamnaceae</code>.</p>
 <ol start="2" style="list-style-type: decimal">
 <li>We would like to perform a t-test to compare the means of the average cross-sectional vessel area for Rhamnaceae and Fabaceae, however, before we do this we will graph these data to observe if we expect the t-test to find a significant different in means.</li>
 </ol>
 <p>Using the <code>boxplot()</code> function requires a specific structure of the data:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="how-to-do-the-analysis-in-r.html#cb11-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">Family =</span> <span class="fu">c</span>(Rhamnaceae<span class="sc">$</span>Family,Fabaceae<span class="sc">$</span>Family), <span class="at">Area =</span> <span class="fu">c</span>(Rhamnaceae<span class="sc">$</span>A.mm, Fabaceae<span class="sc">$</span>A.mm))</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="how-to-do-the-analysis-in-r.html#cb12-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">Family =</span> <span class="fu">c</span>(Rhamnaceae<span class="sc">$</span>Family,Fabaceae<span class="sc">$</span>Family), <span class="at">Area =</span> <span class="fu">c</span>(Rhamnaceae<span class="sc">$</span>A.mm, Fabaceae<span class="sc">$</span>A.mm))</span></code></pre></div>
 <p>Note that <code>c()</code> binds lists together, and in the the <code>Family</code> column of the new <a href="https://ahurford.github.io/quant-guide-all-courses/rintro.html#data-structures">dataframe</a> <code>data</code>, we need the value from the <code>$Family</code> column of the variables <code>Rhamnaceae</code> and <code>Fabaceae</code>. In the <code>Area</code> column of the new dataframe <code>data</code> we need the average cross-sectional area of the vessels <code>$A.mm</code> for the variables <code>Rhamnaceae</code> and <code>Fabaceae</code>. It is likely helpful to look at the form of the data to make sure nothing has gone wrong:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="how-to-do-the-analysis-in-r.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="how-to-do-the-analysis-in-r.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
 <pre><code>##       Family        Area
 ## 1 Rhamnaceae 0.002922467
 ## 2 Rhamnaceae 0.000380133
@@ -253,7 +257,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4 Rhamnaceae 0.008659015
 ## 5 Rhamnaceae 0.012271846
 ## 6 Rhamnaceae 0.005026548</code></pre>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="how-to-do-the-analysis-in-r.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(data)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="how-to-do-the-analysis-in-r.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(data)</span></code></pre></div>
 <pre><code>##       Family       Area
 ## 101 Fabaceae 0.04154756
 ## 102 Fabaceae 0.03300636
@@ -262,13 +266,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 105 Fabaceae 0.02544690
 ## 106 Fabaceae 0.01327323</code></pre>
 <p>(Note <code>tail</code> gives the last 6 rows). If we have made a dataframe with the correct structure, then we can use the <code>boxplot</code> command to visualize the average cross sectional area for vessels of plants from the families <code>Rhamnaceae</code> and <code>Fabaceae</code>.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="how-to-do-the-analysis-in-r.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(Area<span class="sc">~</span>Family, data, <span class="at">ylab =</span> <span class="st">&quot;Av. cross-sectional area of vessels (mm)&quot;</span>)</span></code></pre></div>
-<p><img src="walktwoods_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="how-to-do-the-analysis-in-r.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(Area<span class="sc">~</span>Family, data, <span class="at">ylab =</span> <span class="st">&quot;Av. cross-sectional area of vessels (mm)&quot;</span>)</span></code></pre></div>
+<p><img src="walktwoods_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 <p>Note that the rectangle for the boxplot is the interquartile range (from the 25th to 75th percentiles of our data). The 25th percentile means that only 25% of <code>Rhamnaceae</code> and <code>Fabaceae</code> species have average cross-sectional vessel areas less than these values. From this box plot, it appears that the mean of the average cross-sectional vesseal area for Rhamnaceae species is different than for Fabaceae species, suggesting that we might expect the t-test to give a significant result.</p>
 <ol start="4" style="list-style-type: decimal">
 <li>Performing a <a href="https://ahurford.github.io/quant-guide-all-courses/statistics.html#t.test">t-test</a>) allows us to determine if the groups are statistically different and measures the probability that an observed difference could have occurred just by random chance. Here, we want to evaluate <span class="math inline">\(\alpha = 0.05\)</span>, indicating that we are comfortable with a 5% risk of concluding a difference exists when there is no difference. If our p-value is greater than <span class="math inline">\(\alpha\)</span>, both means are not statistically different (based on the datasets).</li>
 </ol>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="how-to-do-the-analysis-in-r.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(Rhamnaceae<span class="sc">$</span>A.mm, Fabaceae<span class="sc">$</span>A.mm, <span class="at">alternative =</span> <span class="st">&#39;two.sided&#39;</span>,<span class="at">paired =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="how-to-do-the-analysis-in-r.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(Rhamnaceae<span class="sc">$</span>A.mm, Fabaceae<span class="sc">$</span>A.mm, <span class="at">alternative =</span> <span class="st">&#39;two.sided&#39;</span>,<span class="at">paired =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <pre><code>## 
 ##  Welch Two Sample t-test
 ## 
