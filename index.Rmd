@@ -77,9 +77,9 @@ head(data1)
 names(data1)
 ```
 
-7.  It is now helpful to think about the data given your knowledge of Botany. Do you hypothesize a relationship between the data in any of the columns? You might start investigating your hypotheses by making a plot, for example, showing the `Average cross-sectional vessel area` and `the number of vessels`. To extract a column of the data, see [Handling the data](https://ahurford.github.io/quant-guide-all-courses/handling-data.html). You may use either the base R approach or use the `dplyr` package:
+7.  It is now helpful to think about the data given your knowledge of Botany. Do you hypothesize a relationship between the data in any of the columns? You might start investigating your hypotheses by making a plot, for example, showing the `Average cross-sectional vessel area` and `the number of vessels`. To extract a column of the data, see [Handling the data](https://ahurford.github.io/quant-guide-all-courses/handling-data.html). You may use either Approach 1: base R or Approach 2: `dplyr` (generally, the `dplyr` commands tend to be simpler, however, it is good to also know the base R commands).
 
-**Base R**
+**Approach 1: Base R**
 
 For the `Average cross sectional vessel area`, in the `Console`, try:
 
@@ -95,11 +95,25 @@ plot(data1$N.mm,data1$A.mm, pch = 19, xlab = "Average cross sectional vessel are
 
 You need to write the column names exactly as they appear in the output of `names(data1)` or RStudio will produce an error.
 
-**dplyr**
+**Approach 2: dplyr**
 
 To use the [`dplyr` functions](https://ahurford.github.io/quant-guide-all-courses/handling-data.html#dplyr) you need to load the package (and [install](https://ahurford.github.io/quant-guide-all-courses/rintro.html#r-packages) if you have not already done so):
+
 ```{r,message=F}
 library(dplyr)
+```
+
+For the `Average cross sectional vessel area`, in the `Console`, try:
+
+```{r, results = F}
+select(data1, A.mm)
+```
+
+Note that the output of `select(data1, A.mm)` is a data frame, but the plot function when used as `plot(x,y)` the `x` and `y` should be a vector. To make the same plot, but using `dplyr` functions, try:
+
+```{r}
+p = data.frame(select(data1, A.mm), select(data1, N.mm))
+plot(p, pch = 19, xlab = "Average cross sectional vessel area",ylab = "Number of vessels per unit cross sectional area", col="blue")
 ```
 
 8.  Can you make a [plot](https://ahurford.github.io/quant-guide-all-courses/graph.html#scatter-plots-with-plotxy) of different variables, for example, `Wood density` and `Average of the absolute value of latitude`?
@@ -114,6 +128,7 @@ This section will give a brief overview of how to perform a sample t-test to com
 
 1.  First, produce two variables that contain the data.
 
+**Approach 1: Base R**
 ```{r, results=F}
 Rhamnaceae = data1[data1$Family=="Rhamnaceae",]
 Fabaceae = data1[data1$Family=="Fabaceae",]
@@ -130,10 +145,20 @@ length(Fabaceae[,1])
 
 The command `head()` reports the first 6 rows, and `length(Rhamnaceae[,1])` gives the length of column 1 of the variable `Rhamnaceae`.
 
+**Approach 2: dplyr**
+
+```{r, results=F}
+Rhamnaceae = filter(data1,Family=="Rhamnaceae")
+Fabaceae = filter(data1,Family=="Fabaceae")
+```
+
+You can also learn more about the data by using `length()` and `head()` as for the base R approach described above. To learn more about these functions see [here](https://ahurford.github.io/quant-guide-all-courses/handling-data.html#base-r).
+
 2.  We would like to perform a t-test to compare the means of the average cross-sectional vessel area for Rhamnaceae and Fabaceae, however, before we do this we will graph these data to observe if we expect the t-test to find a significant different in means.
 
 Using the `boxplot()` function requires a specific structure of the data:
 
+**Approach 1: Base R**
 ```{r}
 data = data.frame(Family = c(Rhamnaceae$Family,Fabaceae$Family), Area = c(Rhamnaceae$A.mm, Fabaceae$A.mm))
 ```
@@ -145,7 +170,21 @@ head(data)
 tail(data)
 ```
 
-(Note `tail` gives the last 6 rows). If we have made a dataframe with the correct structure, then we can use the `boxplot` command to visualize the average cross sectional area for vessels of plants from the families `Rhamnaceae` and  `Fabaceae`.
+(Note `tail` gives the last 6 rows).
+
+**Approach 2: dplyr**
+
+In `dplyr`, can use make the data frame, `data`, by using `select()` to choose columns, and filter to keep the families of interest. We can do this efficiently using pipes:
+
+```{r}
+data = select(data1,Family, Area=A.mm) %>%
+  filter(Family=="Rhamnaceae"|Family=="Fabaceae")
+tail(data)
+```
+
+**Both approaches**
+
+If we have made a dataframe with the correct structure, then we can use the `boxplot` command to visualize the average cross sectional area for vessels of plants from the families `Rhamnaceae` and  `Fabaceae`.
 
 ```{r, results=T}
 boxplot(Area~Family, data, ylab = "Av. cross-sectional area of vessels (mm)")
