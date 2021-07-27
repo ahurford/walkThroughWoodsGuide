@@ -13,6 +13,8 @@ If you have not used `R` previously, we recommend that you work through Chapters
 
 # How to do the analysis in R {-}
 
+## Scatter plot and correlation {-}
+
 Let's explore the _A walk through the woods_ data!
 
 1.  It is best to make a folder on your computer Desktop where you will work on this assignment (if needed, review [Best Practices](https://ahurford.github.io/quant-guide-all-courses/style.html)).
@@ -116,11 +118,11 @@ p = data.frame(select(data1, A.mm), select(data1, N.mm))
 plot(p, pch = 19, xlab = "Average cross sectional vessel area",ylab = "Number of vessels per unit cross sectional area", col="blue")
 ```
 
-8.  Can you make a [plot](https://ahurford.github.io/quant-guide-all-courses/graph.html#scatter-plots-with-plotxy) of different variables, for example, `Wood density` and `Average of the absolute value of latitude`?
+8.  Can you make a [plot](https://ahurford.github.io/quant-guide-all-courses/graph.html#scatter-plots-with-plotxy) of different variables, for example, _Wood density_ and _Average of the absolute value of latitude_?
 
 9.  What happens if you type `plot(data1$Family, data1$Binomial)` in the `Console`? Why is this not a very sensible choice for something to plot?
 
-10. To analyze the relation between variables we can use the `cor(x,y,method = "pearson")` function. See [Correlation](https://ahurford.github.io/quant-guide-all-courses/statistics.html#correlation) for details.
+10. To analyze the relationship between variables we can use the `cor(x,y,method = "pearson")` function. See [Correlation](https://ahurford.github.io/quant-guide-all-courses/statistics.html#correlation) for details. Can you find the correlation coefficient for two variables in the `woods.csv` data set? If you plot these same two variables do you see a relationship?
 
 ## Comparing two means with a t.test {-}
 
@@ -154,27 +156,26 @@ Fabaceae = filter(data1,Family=="Fabaceae")
 
 You can also learn more about the data by using `length()` and `head()` as for the base R approach described above. To learn more about these functions see [here](https://ahurford.github.io/quant-guide-all-courses/handling-data.html#base-r).
 
-2.  We would like to perform a t-test to compare the means of the average cross-sectional vessel area for Rhamnaceae and Fabaceae, however, before we do this we will graph these data to observe if we expect the t-test to find a significant different in means.
+2.  We would like to perform a t-test to compare the means of the average cross-sectional vessel area for Rhamnaceae and Fabaceae, however, before we do this we will graph these data to observe if we expect the t-test to find a significant difference in means. An instructive graph to make is a boxplot, since this will allow us to visualize the median value for each of the two families, as well as other quantiles, and extreme values.
 
-Using the `boxplot()` function requires a specific structure of the data:
+Using the `boxplot()` function requires the data to be arranged in a data frame with a specific organization:
 
 **Approach 1: Base R**
 ```{r}
 data = data.frame(Family = c(Rhamnaceae$Family,Fabaceae$Family), Area = c(Rhamnaceae$A.mm, Fabaceae$A.mm))
 ```
 
-Note that `c()` binds lists together, and in the the `Family` column of the new [dataframe](https://ahurford.github.io/quant-guide-all-courses/rintro.html#data-structures) `data`, we need the value from the `$Family` column of the variables `Rhamnaceae` and  `Fabaceae`. In the `Area` column of the new dataframe `data` we need the average cross-sectional area of the vessels `$A.mm` for the variables `Rhamnaceae` and  `Fabaceae`. It is likely helpful to look at the form of the data to make sure nothing has gone wrong:
-
+To see the resulting data frame, `data`, run these commands:
 ```{r}
 head(data)
 tail(data)
 ```
 
-(Note `tail` gives the last 6 rows).
+Note that `c()` binds lists together, and in the `Family` column of the new [data frame](https://ahurford.github.io/quant-guide-all-courses/rintro.html#data-structures) `data`, we need the value from the `$Family` column to be `Rhamnaceae` or  `Fabaceae`. In the `Area` column of `data` we need the average cross-sectional area of the vessels `$A.mm`. 
 
 **Approach 2: dplyr**
 
-In `dplyr`, can use make the data frame, `data`, by using `select()` to choose columns, and filter to keep the families of interest. We can do this efficiently using pipes:
+In `dplyr`, we can make the data frame, `data`, by using [`select()`](https://ahurford.github.io/quant-guide-all-courses/handling-data.html#selecting-a-column) to choose columns, and [`filter()`](https://ahurford.github.io/quant-guide-all-courses/handling-data.html#filtering-data) to keep the families of interest. We can do this efficiently using [pipes](https://ahurford.github.io/quant-guide-all-courses/handling-data.html#pipes):
 
 ```{r}
 data = select(data1,Family, Area=A.mm) %>%
@@ -184,7 +185,7 @@ tail(data)
 
 **Both approaches**
 
-If we have made a dataframe with the correct structure, then we can use the `boxplot` command to visualize the average cross sectional area for vessels of plants from the families `Rhamnaceae` and  `Fabaceae`.
+If we have made a data frame with the correct structure, then we can use the `boxplot()` command to visualize the average cross sectional area for vessels of plants from the families `Rhamnaceae` and  `Fabaceae`.
 
 ```{r, results=T}
 boxplot(Area~Family, data, ylab = "Av. cross-sectional area of vessels (mm)")
@@ -192,12 +193,21 @@ boxplot(Area~Family, data, ylab = "Av. cross-sectional area of vessels (mm)")
 
 Note that the rectangle for the boxplot is the interquartile range (from the 25th to 75th percentiles of our data). The 25th percentile means that only 25% of `Rhamnaceae` and  `Fabaceae` species have average cross-sectional vessel areas less than these values. From this box plot, it appears that the mean of the average cross-sectional vesseal area for Rhamnaceae species is different than for Fabaceae species, suggesting that we might expect the t-test to give a significant result.
 
-4.  Performing a [t-test](https://ahurford.github.io/quant-guide-all-courses/statistics.html#t.test)) allows us to determine if the groups are statistically different and measures the probability that an observed difference could have occurred just by random chance. Here, we want to evaluate $\alpha = 0.05$, indicating that we are comfortable with a 5% risk of concluding a difference exists when there is no difference. If our p-value is greater than $\alpha$, both means are not statistically different (based on the datasets).
+4.  Performing a [t-test](https://ahurford.github.io/quant-guide-all-courses/statistics.html#t.test)) allows us to determine if the groups are statistically different and measures the probability that an observed difference could have occurred just by random chance. Here, we want to evaluate $\alpha = 0.05$, indicating that we are comfortable with a 5% risk of concluding a difference exists when there is no difference. If our p-value is greater than $\alpha$, both means are not statistically different.
+
 
 ```{r}
 t.test(Rhamnaceae$A.mm, Fabaceae$A.mm, alternative = 'two.sided',paired = FALSE)
 ```
 
-Given the p-value of $1.76 \times 10^{-10}$, which is less than $\alpha = 0.05$, we reject our null hypothesis that the mean cross-sectional area of vessels for Rhamnaceae species is the same as for Fabaceae. Therefore, our analysis suggest that the average cross-section vessel area for species of these Families are different.
+or, using `dplyr`:
+
+```{r}
+Rham.area = filter(data1,Family == "Rhamnaceae") %>% select(A.mm)
+Faba.area = filter(data1,Family == "Fabaceae") %>% select(A.mm)
+t.test(Rham.area, Faba.area)
+```
+
+Given the p-value of $1.76 \times 10^{-10}$, which is less than $\alpha = 0.05$, we reject our null hypothesis that the mean cross-sectional area of vessels is the same for Rhamnaceae and Fabaceae species. Therefore, our analysis suggest that the average cross-section vessel area for species of these Families are different.
 
 
