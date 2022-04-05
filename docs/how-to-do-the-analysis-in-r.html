@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>How to do the analysis in R | A walk through the woods</title>
   <meta name="description" content="Guide a to Walk through woods Assignment" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.25 and GitBook 2.6.7" />
 
   <meta property="og:title" content="How to do the analysis in R | A walk through the woods" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="Guide a to Walk through woods Assignment" />
   <meta name="github-repo" content="atellezcastr/walkThroughWoodsGuide" />
@@ -31,8 +30,8 @@
   
 <link rel="prev" href="index.html"/>
 
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -48,9 +47,9 @@
 
 
 
-
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -131,11 +130,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Getting started and Learning R</a></li>
-<li class="chapter" data-level="" data-path="how-to-do-the-analysis-in-r.html"><a href="how-to-do-the-analysis-in-r.html"><i class="fa fa-check"></i>How to do the analysis in R</a>
+<li><a href="index.html#getting-started-and-learning-r">Getting started and Learning R<span></span></a></li>
+<li><a href="how-to-do-the-analysis-in-r.html#how-to-do-the-analysis-in-r">How to do the analysis in R<span></span></a>
 <ul>
-<li class="chapter" data-level="" data-path="how-to-do-the-analysis-in-r.html"><a href="how-to-do-the-analysis-in-r.html#scatter-plot-and-correlation"><i class="fa fa-check"></i>Scatter plot and correlation</a></li>
-<li class="chapter" data-level="" data-path="how-to-do-the-analysis-in-r.html"><a href="how-to-do-the-analysis-in-r.html#comparing-two-means-with-a-t.test"><i class="fa fa-check"></i>Comparing two means with a t.test</a></li>
+<li><a href="how-to-do-the-analysis-in-r.html#scatter-plot-and-correlation">Scatter plot and correlation<span></span></a></li>
+<li><a href="how-to-do-the-analysis-in-r.html#comparing-two-means-with-a-t.test">Comparing two means with a t.test<span></span></a></li>
 </ul></li>
 </ul>
 
@@ -154,10 +153,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="how-to-do-the-analysis-in-r" class="section level1 unnumbered">
-<h1>How to do the analysis in R</h1>
-<div id="scatter-plot-and-correlation" class="section level2 unnumbered">
-<h2>Scatter plot and correlation</h2>
+<div id="how-to-do-the-analysis-in-r" class="section level1 unnumbered hasAnchor">
+<h1>How to do the analysis in R<a href="how-to-do-the-analysis-in-r.html#how-to-do-the-analysis-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="scatter-plot-and-correlation" class="section level2 unnumbered hasAnchor">
+<h2>Scatter plot and correlation<a href="how-to-do-the-analysis-in-r.html#scatter-plot-and-correlation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Let’s explore the <em>A walk through the woods</em> data!</p>
 <ol style="list-style-type: decimal">
 <li><p>It is best to make a folder on your computer Desktop where you will work on this assignment (if needed, review <a href="https://ahurford.github.io/quant-guide-all-courses/style.html">Best Practices</a>).</p></li>
@@ -220,8 +219,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>Approach 1: Base R</strong></p>
 <p>For the <code>Average cross sectional vessel area</code>, in the <code>Console</code>, try:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="how-to-do-the-analysis-in-r.html#cb7-1" aria-hidden="true" tabindex="-1"></a>data1<span class="sc">$</span>A.mm</span></code></pre></div>
-<p>Be sure to type exactly <code>A.mm</code> after the <code>$</code>. Try making your plot:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="how-to-do-the-analysis-in-r.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(data1<span class="sc">$</span>N.mm,data1<span class="sc">$</span>A.mm, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">xlab =</span> <span class="st">&quot;Average cross sectional vessel area&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Number of vessels per unit cross sectional area&quot;</span>, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<p>Be sure to type exactly <code>A.mm</code> after the <code>$</code>. Try making your plot, including a line of best fit:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="how-to-do-the-analysis-in-r.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(data1<span class="sc">$</span>A.mm, data1<span class="sc">$</span>N.mm, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">xlab =</span> <span class="st">&quot;Average cross sectional vessel area&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Number of vessels per unit cross sectional area&quot;</span>, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb8-2"><a href="how-to-do-the-analysis-in-r.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(data1<span class="sc">$</span>N.mm <span class="sc">~</span> data1<span class="sc">$</span>A.mm))</span></code></pre></div>
 <p><img src="walktwoods_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>You need to write the column names exactly as they appear in the output of <code>names(data1)</code> or RStudio will produce an error.</p>
 <p><strong>Approach 2: dplyr</strong></p>
@@ -231,16 +231,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="how-to-do-the-analysis-in-r.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(data1, A.mm)</span></code></pre></div>
 <p>Note that the output of <code>select(data1, A.mm)</code> is a data frame, but the plot function when used as <code>plot(x,y)</code> the <code>x</code> and <code>y</code> should be a vector. To make the same plot, but using <code>dplyr</code> functions, try:</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="how-to-do-the-analysis-in-r.html#cb11-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="fu">select</span>(data1, A.mm), <span class="fu">select</span>(data1, N.mm))</span>
-<span id="cb11-2"><a href="how-to-do-the-analysis-in-r.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(p, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">xlab =</span> <span class="st">&quot;Average cross sectional vessel area&quot;</span>,<span class="at">ylab =</span> <span class="st">&quot;Number of vessels per unit cross sectional area&quot;</span>, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<span id="cb11-2"><a href="how-to-do-the-analysis-in-r.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(p, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">xlab =</span> <span class="st">&quot;Average cross sectional vessel area&quot;</span>,<span class="at">ylab =</span> <span class="st">&quot;Number of vessels per unit cross sectional area&quot;</span>, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb11-3"><a href="how-to-do-the-analysis-in-r.html#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(p<span class="sc">$</span>N.mm <span class="sc">~</span> p<span class="sc">$</span>A.mm))</span></code></pre></div>
 <p><img src="walktwoods_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 <ol start="8" style="list-style-type: decimal">
 <li><p>Can you make a <a href="https://ahurford.github.io/quant-guide-all-courses/graph.html#scatter-plots-with-plotxy">plot</a> of different variables, for example, <em>Wood density</em> and <em>Average of the absolute value of latitude</em>?</p></li>
 <li><p>What happens if you type <code>plot(data1$Family, data1$Binomial)</code> in the <code>Console</code>? Why is this not a very sensible choice for something to plot?</p></li>
-<li><p>To analyze the relationship between variables we can use the <code>cor(x,y,method = "pearson")</code> function. See <a href="https://ahurford.github.io/quant-guide-all-courses/statistics.html#correlation">Correlation</a> for details. Can you find the correlation coefficient for two variables in the <code>woods.csv</code> data set? If you plot these same two variables do you see a relationship?</p></li>
+<li><p>To analyze the relationship between variables we can use the <code>cor(x,y,method = "pearson")</code> function. See <a href="https://ahurford.github.io/quant-guide-all-courses/statistics.html#correlation">Correlation</a> for details. Can you find the correlation coefficient for any two reasonable variables in the <code>woods.csv</code> data set? Which two did you choose? If you plot these same two variables do you see a relationship?</p></li>
 </ol>
 </div>
-<div id="comparing-two-means-with-a-t.test" class="section level2 unnumbered">
-<h2>Comparing two means with a t.test</h2>
+<div id="comparing-two-means-with-a-t.test" class="section level2 unnumbered hasAnchor">
+<h2>Comparing two means with a t.test<a href="how-to-do-the-analysis-in-r.html#comparing-two-means-with-a-t.test" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This section will give a brief overview of how to perform a sample t-test to compare the average cross-sectional vessel area between two families: Rhamnaceae and Fabaceae. This example is to illustrate the coding for the analysis; you will want to use your knowledge of Botany to formulate a hypothesis to test.</p>
 <ol style="list-style-type: decimal">
 <li>First, produce two variables that contain the data.</li>
@@ -343,7 +344,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -383,6 +383,10 @@ gitbook.start({
 "text": null
 },
 "download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }
