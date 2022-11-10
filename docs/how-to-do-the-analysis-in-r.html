@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>How to do the analysis in R | A walk through the woods</title>
   <meta name="description" content="Guide a to Walk through woods Assignment" />
-  <meta name="generator" content="bookdown 0.25 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="How to do the analysis in R | A walk through the woods" />
   <meta property="og:type" content="book" />
@@ -130,11 +130,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="index.html#getting-started-and-learning-r">Getting started and Learning R<span></span></a></li>
-<li><a href="how-to-do-the-analysis-in-r.html#how-to-do-the-analysis-in-r">How to do the analysis in R<span></span></a>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Getting started and Learning R</a></li>
+<li class="chapter" data-level="" data-path="how-to-do-the-analysis-in-r.html"><a href="how-to-do-the-analysis-in-r.html"><i class="fa fa-check"></i>How to do the analysis in R</a>
 <ul>
-<li><a href="how-to-do-the-analysis-in-r.html#scatter-plot-and-correlation">Scatter plot and correlation<span></span></a></li>
-<li><a href="how-to-do-the-analysis-in-r.html#comparing-two-means-with-a-t.test">Comparing two means with a t.test<span></span></a></li>
+<li class="chapter" data-level="" data-path="how-to-do-the-analysis-in-r.html"><a href="how-to-do-the-analysis-in-r.html#scatter-plot-and-correlation"><i class="fa fa-check"></i>Scatter plot and correlation</a></li>
+<li class="chapter" data-level="" data-path="how-to-do-the-analysis-in-r.html"><a href="how-to-do-the-analysis-in-r.html#comparing-two-means-with-a-t.test"><i class="fa fa-check"></i>Comparing two means with a t.test</a></li>
 </ul></li>
 </ul>
 
@@ -296,7 +296,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 105   Fabaceae 0.02544690
 ## 106   Fabaceae 0.01327323</code></pre>
 <p><strong>Both approaches</strong></p>
-<p>If we have made a data frame with the correct structure, then we can use the <code>boxplot()</code> command to visualize the average cross sectional area for vessels of plants from the families <code>Rhamnaceae</code> and <code>Fabaceae</code>.</p>
+<p>If we have made a data frame with the correct structure, then we can use the <code>boxplot()</code> command to visualize the average cross sectional area for vessels of plants from the families <code>Rhamnaceae</code> and <code>Fabaceae</code>. If you are not familiar with <code>boxplot()</code> in <code>R</code> you can read about it from the <a href="https://ahurford.github.io/quant-guide-all-courses/graph.html#boxplot">quantitative training guide</a>.</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="how-to-do-the-analysis-in-r.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(Area<span class="sc">~</span>Family, data, <span class="at">ylab =</span> <span class="st">&quot;Av. cross-sectional area of vessels (mm)&quot;</span>)</span></code></pre></div>
 <p><img src="walktwoods_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
 <p>Note that the rectangle for the boxplot is the interquartile range (from the 25th to 75th percentiles of our data). The 25th percentile means that only 25% of <code>Rhamnaceae</code> and <code>Fabaceae</code> species have average cross-sectional vessel areas less than these values. From this box plot, it appears that the mean of the average cross-sectional vesseal area for Rhamnaceae species is different than for Fabaceae species, suggesting that we might expect the t-test to give a significant result.</p>
@@ -400,7 +400,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

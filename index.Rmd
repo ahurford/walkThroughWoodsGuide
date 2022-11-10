@@ -187,7 +187,7 @@ tail(data)
 
 **Both approaches**
 
-If we have made a data frame with the correct structure, then we can use the `boxplot()` command to visualize the average cross sectional area for vessels of plants from the families `Rhamnaceae` and  `Fabaceae`.
+If we have made a data frame with the correct structure, then we can use the `boxplot()` command to visualize the average cross sectional area for vessels of plants from the families `Rhamnaceae` and  `Fabaceae`. If you are not familiar with `boxplot()` in `R` you can read about it from the [quantitative training guide](https://ahurford.github.io/quant-guide-all-courses/graph.html#boxplot).
 
 ```{r, results=T}
 boxplot(Area~Family, data, ylab = "Av. cross-sectional area of vessels (mm)")
